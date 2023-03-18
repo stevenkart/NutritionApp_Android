@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Nutritional App"
+             x:Class="NutritionApp_Android.Views.NutritionLogin">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#40E0D0</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <ContentView Padding="0,20,0,10" VerticalOptions="StartAndExpand">
+                
+            </ContentView>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+
+                <Button VerticalOptions="Center" Text="Login"/>
+                <Button VerticalOptions="Center" Text="Sing Up" BackgroundColor="{StaticResource ColorSecondaryButton}"/>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
