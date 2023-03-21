@@ -46,7 +46,7 @@ namespace NutritionApp_Android.Models
             {
         
 
-                string RouteSufix = string.Format("Users/ValidateUserLogin?pUserName={0}&pPassword={1}", this.Email, this.Password);
+                string RouteSufix = string.Format("Users/ValidateUserLogin?pEmail={0}&pPassword={1}", this.Email, this.Password);
 
                 //con esto obtenemos la ruta completa de consumo
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
