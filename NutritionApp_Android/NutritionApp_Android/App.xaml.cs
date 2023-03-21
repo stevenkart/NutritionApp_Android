@@ -14,7 +14,8 @@ namespace NutritionApp_Android
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
+            MainPage = new NavigationPage(new NutritionLogin());
         }
 
         protected override void OnStart()
