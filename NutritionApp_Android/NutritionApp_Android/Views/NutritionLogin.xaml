@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Nutritional App"
+             x:Class="NutritionApp_Android.Views.NutritionLogin">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#40E0D0</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <ContentView Padding="0,50,0,10" VerticalOptions="StartAndExpand">
+
+                <Label x:Name="labelLogin" Text="Login Page" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" TextColor="White"></Label>
+
+            </ContentView>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                <StackLayout Padding="10,0,10,30" VerticalOptions="Center">
+                    <Entry x:Name="TxtEmail" Placeholder="Email" FontSize="20"  Keyboard="Email"/>
+                    <Entry x:Name="TxtPassword" Placeholder="Password" FontSize="20"  Keyboard="Default" IsPassword="True" />
+                </StackLayout>
+
+                <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Login" Clicked="BtnLogin_Clicked"/>
+                <Button x:Name="BtnSingUp" VerticalOptions="Center" Text="Sing Up" BackgroundColor="{StaticResource ColorSecondaryButton}" Clicked="BtnSingUp_Clicked"/>
+
+                <Label Text="Password Recovery..." />
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
