@@ -31,7 +31,7 @@ namespace NutritionApp_Android.Models
 
 
         //Funciones
-        public async Task<UserDTO> GetUserData(string email)
+        public async Task<UserDTO> GetUserData(string pEmail)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace NutritionApp_Android.Models
                 //dentro del controller
 
 
-                string RouteSufix = string.Format("Users/GetUserData?Correo={0}", email);
+                string RouteSufix = string.Format("Users/GetUserData?pEmail={0}", pEmail);
 
                 //con esto obtenemos la ruta completa de consumo
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
