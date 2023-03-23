@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp_Android.Views.MainMenuPage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#EA4113</Color>
+            <Color x:Key="ColorRootButtons">#30DC62</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="14,15,14,10">
+                <FlexLayout Direction="Column">
+                    <Label x:Name="UserName"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="22"/>
+                    <Label Text="Choose an Option to continue..."
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="20"/>
+
+                    <Grid Padding="10, 20, 10, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0"
+                         x:Name="BtnUser"
+                         Text="Manage my Account Details" 
+                         BackgroundColor="Green"
+                         HeightRequest="100"
+                         WidthRequest="100"
+                         FontSize="14"
+                         CornerRadius="20"/>
+                        <Button Grid.Row="0" Grid.Column="1" 
+                         x:Name="BtnReminder"
+                         Text="My Reminders" 
+                         BackgroundColor="Purple"
+                         HeightRequest="100"
+                         WidthRequest="100"
+                         FontSize="14"
+                         CornerRadius="20"/>
+                        <Button Grid.Row="1" Grid.Column="0" 
+                         x:Name="BtnNutritionalPlan"
+                         Text="Nutritional Plans" 
+                         BackgroundColor="Coral"
+                         HeightRequest="100"
+                         WidthRequest="100"
+                         FontSize="14"
+                         CornerRadius="20"/>
+                        <Button Grid.Row="1" Grid.Column="1" 
+                         x:Name="BtnExercise"
+                         Text="Exercise Plans" 
+                         BackgroundColor="Orchid"
+                         HeightRequest="100"
+                         WidthRequest="100"
+                         FontSize="14"
+                         CornerRadius="20"/>
+                    </Grid>
+                </FlexLayout>
+
+                <StackLayout Padding="20,10,20,20">
+                    <Button x:Name="BtnAllUserEdit" Text="Manage Users" FontSize="12" BackgroundColor="{StaticResource ColorRootButtons}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="12" Clicked="BtnAllUserEdit_Clicked"/>
+                    <Button x:Name="BtnAllNutritionalsEdit" Text="Manage Nutritional Plans" FontSize="12" BackgroundColor="{StaticResource ColorRootButtons}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="12" Clicked="BtnAllNutritionalsEdit_Clicked"/>
+                    <Button x:Name="BtnAllExerciseEdit" Text="Manage Exercise Plans" FontSize="12" BackgroundColor="{StaticResource ColorRootButtons}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="12" Clicked="BtnAllExerciseEdit_Clicked"/>
+                    <Button x:Name="BtnExit" Text="Exit" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15" Clicked="BtnExit_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
