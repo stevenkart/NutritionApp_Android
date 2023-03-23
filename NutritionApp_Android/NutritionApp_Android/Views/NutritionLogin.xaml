@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Nutritional App"
-             x:Class="NutritionApp_Android.Views.NutritionLogin">
+             x:Class="NutritionApp_Android.Views.NutritionLogin"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True">
+
 
     <ContentPage.Resources>
         <ResourceDictionary>

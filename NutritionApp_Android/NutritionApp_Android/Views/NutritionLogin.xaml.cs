@@ -22,6 +22,7 @@ namespace NutritionApp_Android.Views
         public NutritionLogin()
         {
             InitializeComponent();
+           
             labelLogin.FontSize = 20;
             this.BindingContext = viewModel = new UserViewModel();
         }
@@ -74,12 +75,14 @@ namespace NutritionApp_Android.Views
 
             if (R)
             {
-                await DisplayAlert("Validation ok", "Welcome!", "OK");
+                //await DisplayAlert("Validation ok", "Welcome!", "OK");
 
-                //GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+                GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+  
 
-                //await Navigation.PushAsync(new WelcomePage());
-                //await Navigation.PushAsync(new OptionsPage());
+                await Navigation.PushAsync(new MainMenuPage());
+
+                //Application.Current.MainPage = new MainMenuPage();
 
                 return;
             }
