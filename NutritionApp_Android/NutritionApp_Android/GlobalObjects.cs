@@ -8,6 +8,7 @@ namespace NutritionApp_Android
     public class GlobalObjects
     {
         public static string MimeType = "application/json";
+        public static string PatchType = "application/json-patch+json";
         public static string ContentType = "Content-Type";
 
 

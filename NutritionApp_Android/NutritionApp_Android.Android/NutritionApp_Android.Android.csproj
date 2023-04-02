@@ -57,6 +57,9 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.564</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch">
+      <Version>6.0.15</Version>
+    </PackageReference>
     <PackageReference Include="NETStandard.Library">
       <Version>2.0.3</Version>
     </PackageReference>
@@ -107,7 +110,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionNutritionApp_AndroidAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarNutritionApp_AndroidAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionNutritionApp_AndroidAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

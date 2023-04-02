@@ -15,8 +15,9 @@ namespace NutritionApp_Android.ViewModels
         public NutritionalPlan MyUserNutritionalPlan { get; set; }
         public ExerciseRoutine MyUserExerciseRoutine { get; set; }
         public User MyUser { get; set; }
-
         public UserDTO MyUserDTO { get; set; }
+        public Email MyEmail { get; set; }
+
 
         public UserViewModel()
         {
@@ -24,6 +25,8 @@ namespace NutritionApp_Android.ViewModels
             MyUserNutritionalPlan = new NutritionalPlan();
             MyUserExerciseRoutine = new ExerciseRoutine();
             MyUserDTO = new UserDTO();
+            MyEmail = new Email();
+
         }
 
         //FUNCIONALIDAD principal del VM
@@ -159,6 +162,64 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+
+
+        public async Task<bool> AddRecoveryCode()
+                                       // decimal pCode)
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                int pCode = 20;
+                //MyUser.RecoveryCode = pCode;
+                
+                bool R = await MyUser.AddRecoveryCode(1, "recoveryCode", pCode);
+
+                //UNA VEZ QUE SE HAYA GUARDADO CORRECTAMENTE EL RECOVERYCODE, SE ENVIA EL EMAIL
+                if (R)
+                {
+                    MyEmail.SendTo = "123gmail.com";
+                    MyEmail.Subject = "AutoAPPO Password Recovery Code";
+                    MyEmail.Message = string.Format("Your recovery code is: {0}", pCode);
+
+                    R = (MyEmail.SendEmail());
+
+                }
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
 
