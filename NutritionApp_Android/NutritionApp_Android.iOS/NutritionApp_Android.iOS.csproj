@@ -135,6 +135,9 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.564</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch">
+      <Version>6.0.15</Version>
+    </PackageReference>
     <PackageReference Include="NETStandard.Library">
       <Version>2.0.3</Version>
     </PackageReference>
