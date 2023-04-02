@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp_Android.Views.AddNutriPlanPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#40E0D0</Color>
+            <Color x:Key="ColorSuccessButton">Green</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20,10,20,20">
+
+                <FlexLayout Direction="Column">
+                    <Entry x:Name="TxtName" Placeholder="Name" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <Entry x:Name="TxtDescription" Placeholder="Description" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <Entry x:Name="TxtPlanXample" Placeholder="Example" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </FlexLayout>
+
+
+                <StackLayout Padding="20,10,20,20">
+                    <Button x:Name="BtnAdd" Text="Add New" BackgroundColor="{StaticResource ColorSuccessButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15" Clicked="BtnAdd_Clicked"/>
+                    <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15" Clicked="BtnCancel_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

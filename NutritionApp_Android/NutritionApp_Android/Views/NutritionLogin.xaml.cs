@@ -99,5 +99,22 @@ namespace NutritionApp_Android.Views
         {
             await Navigation.PushAsync(new SingUpPage());
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PasswordRecoveryPage());
+        }
+
+        private void SwShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (SwShowPassword.IsToggled)
+            {
+                TxtPassword.IsPassword = false;
+            }
+            else
+            {
+                TxtPassword.IsPassword = true;
+            }
+        }
     }
 }

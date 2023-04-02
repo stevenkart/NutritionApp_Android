@@ -39,6 +39,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+                        
                         <Button Grid.Row="0" Grid.Column="0"
                          x:Name="BtnUser"
                          Text="Manage my Account Details" 
@@ -46,7 +47,9 @@
                          HeightRequest="100"
                          WidthRequest="100"
                          FontSize="14"
-                         CornerRadius="20"/>
+                         CornerRadius="20"
+                         Clicked="BtnUser_Clicked"/>
+                        
                         <Button Grid.Row="0" Grid.Column="1" 
                          x:Name="BtnReminder"
                          Text="My Reminders" 
@@ -54,7 +57,9 @@
                          HeightRequest="100"
                          WidthRequest="100"
                          FontSize="14"
-                         CornerRadius="20"/>
+                         CornerRadius="20"
+                         Clicked="BtnReminder_Clicked"/>
+                        
                         <Button Grid.Row="1" Grid.Column="0" 
                          x:Name="BtnNutritionalPlan"
                          Text="Nutritional Plans" 
@@ -63,6 +68,7 @@
                          WidthRequest="100"
                          FontSize="14"
                          CornerRadius="20"/>
+                        
                         <Button Grid.Row="1" Grid.Column="1" 
                          x:Name="BtnExercise"
                          Text="Exercise Plans" 
