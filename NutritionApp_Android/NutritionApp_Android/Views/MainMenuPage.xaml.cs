@@ -29,9 +29,9 @@ namespace NutritionApp_Android.Views
 
         }
 
-        private void BtnAllNutritionalsEdit_Clicked(object sender, EventArgs e)
+        private async void BtnAllNutritionalsEdit_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ManageNutritionalPlansPage());
         }
 
         private void BtnAllExerciseEdit_Clicked(object sender, EventArgs e)

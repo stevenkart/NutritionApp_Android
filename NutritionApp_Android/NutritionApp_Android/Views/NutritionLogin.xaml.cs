@@ -99,5 +99,10 @@ namespace NutritionApp_Android.Views
         {
             await Navigation.PushAsync(new SingUpPage());
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PasswordRecoveryPage());
+        }
     }
 }

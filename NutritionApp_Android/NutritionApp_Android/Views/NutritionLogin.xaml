@@ -29,7 +29,11 @@
                 <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Login" Clicked="BtnLogin_Clicked"/>
                 <Button x:Name="BtnSingUp" VerticalOptions="Center" Text="Sing Up" BackgroundColor="{StaticResource ColorSecondaryButton}" Clicked="BtnSingUp_Clicked"/>
 
-                <Label Text="Password Recovery..." />
+                <Label x:Name="LblPasswordRecovery" Text="Password Recovery..." >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
 
         </Grid>
