@@ -25,7 +25,7 @@ namespace NutritionApp_Android.Models
                     System.Net.Mail.MailMessage email = new System.Net.Mail.MailMessage();
 
                     //TODO: crear email valido para enviar correo
-                    email.From = new System.Net.Mail.MailAddress("test@appnutrition.com");
+                    email.From = new System.Net.Mail.MailAddress("robertstevenumca0@gmail.com");
                     email.Subject = Subject;
                     email.Body = Message;
                     email.To.Add(SendTo);
@@ -33,12 +33,12 @@ namespace NutritionApp_Android.Models
                     email.IsBodyHtml = false;
 
                     System.Net.Mail.SmtpClient server = new System.Net.Mail.SmtpClient();
-                    server.Host = "sandbox.smtp.mailtrap.io";
-                    server.Port = 2525;
+                    server.Host = "smtp.gmail.com";
+                    server.Port = 587;
 
                     server.EnableSsl = true;
                     server.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                    server.Credentials = new System.Net.NetworkCredential("6f8921e12cca1a", "c9cbb5e2b896ab");
+                    server.Credentials = new System.Net.NetworkCredential("robertstevenumca0@gmail.com", "gbkprapelrhffriy");
                     server.Send(email);
                     R = true;
                 }

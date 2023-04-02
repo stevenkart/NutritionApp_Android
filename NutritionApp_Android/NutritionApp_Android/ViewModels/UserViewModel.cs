@@ -182,7 +182,7 @@ namespace NutritionApp_Android.ViewModels
             try
             {
 
-                int pCode = 20;
+                int pCode = 25;
                 //MyUser.RecoveryCode = pCode;
                 
                 bool R = await MyUser.AddRecoveryCode(1, "recoveryCode", pCode);
@@ -190,8 +190,8 @@ namespace NutritionApp_Android.ViewModels
                 //UNA VEZ QUE SE HAYA GUARDADO CORRECTAMENTE EL RECOVERYCODE, SE ENVIA EL EMAIL
                 if (R)
                 {
-                    MyEmail.SendTo = "123gmail.com";
-                    MyEmail.Subject = "AutoAPPO Password Recovery Code";
+                    MyEmail.SendTo = "robertstevenumca0@gmail.com";
+                    MyEmail.Subject = "AppNutritio Password Recovery Code";
                     MyEmail.Message = string.Format("Your recovery code is: {0}", pCode);
 
                     R = (MyEmail.SendEmail());
