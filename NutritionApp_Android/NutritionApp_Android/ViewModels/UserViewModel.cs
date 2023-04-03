@@ -163,9 +163,6 @@ namespace NutritionApp_Android.ViewModels
             }
         }
 
-
-
-
         public async Task<bool> AddRecoveryCode(int pId)
         {
 
@@ -219,7 +216,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
         public async Task<bool> DeleteRecoveryCode(int pId)
         {
 
@@ -332,15 +328,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
-
-
-
-
-
-
-
-
 
     }
 }

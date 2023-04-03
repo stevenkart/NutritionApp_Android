@@ -9,16 +9,12 @@ namespace NutritionApp_Android.ViewModels
 {
     public class NutritionalPlanViewModel : BaseViewModel
     {
-
-
         //VM gestiona los cambios que ocurren entre M y V.
         public NutritionalPlan MyNutritionalPlan { get; set; }
         public ObservableCollection<NutritionalPlan> NutritionPlansList { get; set; }
-
         public NutritionalPlanViewModel()
         {
             MyNutritionalPlan = new NutritionalPlan();
-
             NutritionPlansList = new ObservableCollection<NutritionalPlan>();
             NutritionPlansList = new ObservableCollection<NutritionalPlan>
             {
@@ -31,8 +27,6 @@ namespace NutritionApp_Android.ViewModels
                     IdPlan = 2, Name = "Numero 2", Description = "hgerthrt", IdState = 1
                 },
             };
-           
-        }
 
         public async Task<bool> AddPlan(
                                         string pName,
@@ -73,9 +67,5 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
-
-
-
     }
 }

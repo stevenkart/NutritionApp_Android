@@ -1,3 +1,4 @@
+
 ﻿using Acr.UserDialogs;
 using NutritionApp_Android.ViewModels;
 using System;
@@ -222,6 +223,5 @@ namespace NutritionApp_Android.Views
             await Navigation.PopAsync(); //pushh async almacena aun la data de pagina visitada / en cambio PopAsync elimina la data y retorna la pagina anterior
         }
 
-       
     }
 }
