@@ -25,6 +25,7 @@ namespace NutritionApp_Android.Views
            
             labelLogin.FontSize = 20;
             this.BindingContext = viewModel = new UserViewModel();
+            GlobalObjects.LocalUser = null;
         }
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
@@ -103,6 +104,18 @@ namespace NutritionApp_Android.Views
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PasswordRecoveryPage());
+        }
+
+        private void SwShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (SwShowPassword.IsToggled)
+            {
+                TxtPassword.IsPassword = false;
+            }
+            else
+            {
+                TxtPassword.IsPassword = true;
+            }
         }
     }
 }
