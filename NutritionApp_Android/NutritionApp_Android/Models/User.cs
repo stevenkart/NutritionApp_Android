@@ -173,10 +173,8 @@ namespace NutritionApp_Android.Models
                 //En este caso tenemos que enviar un JSON al API con la data del usuario que se quiere agregar
 
 
-
+                
                 JsonObjectPatch JSON = new JsonObjectPatch();
-
-
 
                 JSON.JsonCollector.Add("FullName", this.FullName);
                 JSON.JsonCollector.Add("Phone", this.Phone);
@@ -220,34 +218,6 @@ namespace NutritionApp_Android.Models
             }
         }
 
-                
-        /*      
-        public List<JsonObjectPatch> PatchMethod()
-        {
-            JsonObjectPatch JSON = new JsonObjectPatch();
-
-
-            JSON.JsonCollector.Add( "FullName", this.FullName );
-            JSON.JsonCollector.Add( "Phone", this.Phone );
-            JSON.JsonCollector.Add( "Email", this.Email );
-            JSON.JsonCollector.Add( "Weight", this.Weight );
-            JSON.JsonCollector.Add( "Hight", this.Hight );
-            JSON.JsonCollector.Add( "Age", this.Age );
-            JSON.JsonCollector.Add( "FatPercent", this.FatPercent );
-
-            foreach (DictionaryEntry item in JSON.JsonCollector)
-            {
-                //JsonObjectPatch JSON = new JsonObjectPatch();
-                JSON.path = Convert.ToString( item.Key );
-                JSON.op = "add";
-                JSON.value = Convert.ToString( item.Value );
-
-                JSON.JsonList.Add( JSON );
-            }
-
-            return JSON.JsonList;
-        }
-        */
 
 
         //Funciones
