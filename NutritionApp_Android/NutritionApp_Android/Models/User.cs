@@ -172,9 +172,25 @@ namespace NutritionApp_Android.Models
 
                 //En este caso tenemos que enviar un JSON al API con la data del usuario que se quiere agregar
 
-                List<JsonObjectPatch> list = PatchMethod();
 
-                string SerializedModel = JsonConvert.SerializeObject(list);
+
+                JsonObjectPatch JSON = new JsonObjectPatch();
+
+
+
+                JSON.JsonCollector.Add("FullName", this.FullName);
+                JSON.JsonCollector.Add("Phone", this.Phone);
+                JSON.JsonCollector.Add("Email", this.Email);
+                JSON.JsonCollector.Add("Weight", this.Weight);
+                JSON.JsonCollector.Add("Hight", this.Hight);
+                JSON.JsonCollector.Add("Age", this.Age);
+                JSON.JsonCollector.Add("FatPercent", this.FatPercent);
+
+                List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
+
+
+
+                string SerializedModel = JsonConvert.SerializeObject(JSONList);
 
                 Request.AddBody(SerializedModel, GlobalObjects.MimeType);
 
@@ -205,34 +221,33 @@ namespace NutritionApp_Android.Models
         }
 
                 
-              
+        /*      
         public List<JsonObjectPatch> PatchMethod()
         {
-            List<JsonObjectPatch> list = new List<JsonObjectPatch>();
+            JsonObjectPatch JSON = new JsonObjectPatch();
 
-            Hashtable HS = new Hashtable();
 
-            HS.Add( "FullName", this.FullName );
-            HS.Add( "Phone", this.Phone );
-            HS.Add( "Email", this.Email );
-            HS.Add( "Weight", this.Weight );
-            HS.Add( "Hight", this.Hight );
-            HS.Add( "Age", this.Age );
-            HS.Add( "FatPercent", this.FatPercent );
+            JSON.JsonCollector.Add( "FullName", this.FullName );
+            JSON.JsonCollector.Add( "Phone", this.Phone );
+            JSON.JsonCollector.Add( "Email", this.Email );
+            JSON.JsonCollector.Add( "Weight", this.Weight );
+            JSON.JsonCollector.Add( "Hight", this.Hight );
+            JSON.JsonCollector.Add( "Age", this.Age );
+            JSON.JsonCollector.Add( "FatPercent", this.FatPercent );
 
-            foreach (DictionaryEntry item in HS)
+            foreach (DictionaryEntry item in JSON.JsonCollector)
             {
-                JsonObjectPatch JSON = new JsonObjectPatch();
+                //JsonObjectPatch JSON = new JsonObjectPatch();
                 JSON.path = Convert.ToString( item.Key );
                 JSON.op = "add";
                 JSON.value = Convert.ToString( item.Value );
 
-                list.Add( JSON );
+                JSON.JsonList.Add( JSON );
             }
 
-            return list;
+            return JSON.JsonList;
         }
-        
+        */
 
 
         //Funciones
