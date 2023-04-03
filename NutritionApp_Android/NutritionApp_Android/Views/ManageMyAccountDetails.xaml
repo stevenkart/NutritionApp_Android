@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Manage Account"
              x:Class="NutritionApp_Android.Views.ManageMyAccountDetails">
-          
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,7 +12,9 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="15,15,14,10">
+       
+        <StackLayout Padding="15,50,14,10">
+
 
             <Label Text="Full Name" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
@@ -50,7 +52,7 @@
                 </Entry.Triggers>
             </Entry>
 
-            <Label Text="Weight" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Weight kg" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
             <Entry x:Name="TxtWeight" Placeholder="Weight in Kg" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
                 <Entry.Triggers>
@@ -62,7 +64,7 @@
                 </Entry.Triggers>
             </Entry>
 
-            <Label Text="Height" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Height cm" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
             <Entry x:Name="TxtHeight" Placeholder="Hight in cm" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
                 <Entry.Triggers>
@@ -86,7 +88,7 @@
                 </Entry.Triggers>
             </Entry>
 
-            <Label Text="Fat percent" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Fat percent %" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
             <Entry x:Name="TxtFat" Placeholder="Fat Percent" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
                 <Entry.Triggers>
@@ -103,11 +105,15 @@
             <StackLayout Padding="20,10,20,20">
                 <Button x:Name="BtnUpdate" Text="Update" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnUpdate_Clicked"/>
                 <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
-                            CornerRadius="15" />
-                <Button x:Name="BtnChangePassword" Text="Change password" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold" CornerRadius="15" />
+                            CornerRadius="15" Clicked="BtnCancel_Clicked" />
+                <Button x:Name="BtnChangePassword" Text="Change password" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold" CornerRadius="15" 
+                        Clicked="BtnChangePassword_Clicked"/>
             </StackLayout>
 
 
         </StackLayout>
+
+        
+
     </ContentPage.Content>
 </ContentPage>

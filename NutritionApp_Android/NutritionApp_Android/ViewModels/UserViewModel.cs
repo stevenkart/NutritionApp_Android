@@ -213,6 +213,42 @@ namespace NutritionApp_Android.ViewModels
 
 
 
+        public async Task<bool> UpdatePassword( string pPassword )
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                MyUser.Password = pPassword;
+
+                bool R = await MyUser.UpdatePassword();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+
+
         public async Task<bool> AddRecoveryCode()
                                        // decimal pCode)
         {

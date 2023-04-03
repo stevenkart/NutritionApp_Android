@@ -57,12 +57,22 @@ namespace NutritionApp_Android.Views
 
                 await DisplayAlert(":)", "User Updated Successfully!", "OK");
 
-                await Navigation.PopAsync();
+                await Navigation.PushAsync(new MainMenuPage());
             }
             else
             {
                 await DisplayAlert(":(", "Somenthing went wrong!", "OK");
             }
+        }
+
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainMenuPage());
+        }
+
+        private async void BtnChangePassword_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ChangePassword());
         }
     }
 }

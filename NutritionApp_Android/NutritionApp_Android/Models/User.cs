@@ -219,6 +219,71 @@ namespace NutritionApp_Android.Models
         }
 
 
+        public async Task<bool> UpdatePassword()
+        {
+            try
+            {
+
+
+
+                this.IdUser = GlobalObjects.LocalUser.Id;
+
+                string RouteSufix = string.Format("Users/{0}", this.IdUser);
+
+                //con esto obtenemos la ruta completa de consumo
+                string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Patch);
+
+                //Agregamos la info de la llave de seguridad (ApiKey)
+
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                //En este caso tenemos que enviar un JSON al API con la data del usuario que se quiere agregar
+
+
+
+                JsonObjectPatch JSON = new JsonObjectPatch();
+
+                JSON.JsonCollector.Add("Password", this.Password);
+
+                List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
+
+
+
+                string SerializedModel = JsonConvert.SerializeObject(JSONList);
+
+                Request.AddBody(SerializedModel, GlobalObjects.MimeType);
+
+
+                //ejecucion de la llamada al controlador
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                HttpStatusCode statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                string ErrorMsg = ex.Message;
+
+                //almacenar registro de errores en una bitacora para analisis posteriores
+                //tambien puede ser enviarlos a un servidor de captura de errores
+
+                throw;
+            }
+        }
+
 
         //Funciones
         public async Task<bool> ValidateRecoveryCode()
