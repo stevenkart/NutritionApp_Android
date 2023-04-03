@@ -14,6 +14,11 @@ namespace NutritionApp_Android.Services
         public static string TestingnURLPrefix = "http://192.168.1.237:45455/api/";
         public static string ProductionURLPrefix = "http://192.168.1.237:45455/api/";
 
+        //public static string TestingnURLPrefix = "http://192.168.0.17:45455/api/";
+        //public static string ProductionURLPrefix = "http://192.168.0.17:45455/api/";
+
+
+
         public static string ApiKeyName = "P6ApiKey";
         public static string ApiKeyValue = "AppNutritionJQWERTYINDSBNJDCSBNKL0001*";
 

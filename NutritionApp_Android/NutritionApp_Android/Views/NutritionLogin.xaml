@@ -24,6 +24,7 @@
                 <StackLayout Padding="10,0,10,30" VerticalOptions="Center">
                     <Entry x:Name="TxtEmail" Placeholder="Email" FontSize="20"  Keyboard="Email"/>
                     <Entry x:Name="TxtPassword" Placeholder="Password" FontSize="20"  Keyboard="Default" IsPassword="True" />
+                    <Switch x:Name="SwShowPassword" IsToggled="False" Toggled="SwShowPassword_Toggled" />
                 </StackLayout>
 
                 <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Login" Clicked="BtnLogin_Clicked"/>
