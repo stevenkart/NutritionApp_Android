@@ -30,9 +30,9 @@ namespace NutritionApp_Android.Views
             bool R = false;
 
             if (
-                TxtCurrentPassword.Text != null && !string.IsNullOrEmpty(TxtCurrentPassword.Text.Trim()) &&
-                TxtNewPassword.Text != null && !string.IsNullOrEmpty(TxtNewPassword.Text.Trim()) &&
-                TxtConfirmNewPassword.Text != null && !string.IsNullOrEmpty(TxtConfirmNewPassword.Text.Trim())
+                !string.IsNullOrEmpty(TxtCurrentPassword.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtNewPassword.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtConfirmNewPassword.Text.Trim())
                 )
             {
                 //si hay datos en el usuario y contrasennia se puede continuar 
