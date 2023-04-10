@@ -16,17 +16,19 @@ namespace NutritionApp_Android.Models
 
         public RestRequest Request { get; set; }
 
+        public int IdPlan { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string PlanXample { get; set; }
+        public int IdState { get; set; }
+
         public NutritionalPlan()
         {
 
         }
 
         //Atributes
-        public int IdPlan { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string PlanXample { get; set; }
-        public int IdState { get; set; }
+        
 
         public virtual State? IdStateNavigation { get; set; } = null!;
 
