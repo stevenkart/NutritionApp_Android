@@ -1,10 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:viewmodels="clr-namespace:NutritionApp_Android.ViewModels"
-             x:DataType="viewmodels:NutritionalPlanViewModel"
-             x:Class="NutritionApp_Android.Views.ManageNutritionalPlansPage"
-             Title="ManageNutritionPlans">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp_Android.Views.ManageExerciseRoutinePage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ColorSecondaryButton">#EA4113</Color>
@@ -16,8 +13,8 @@
         <StackLayout Padding="14,15,14,10">
             <FlexLayout Direction="Column">
                 <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
-                       HorizontalTextAlignment="Center" FontSize="18" Text="Manage The Nutritional Plans" FontAttributes="Bold"/>
-                
+                       HorizontalTextAlignment="Center" FontSize="18" Text="Manage The Exercises Routines" FontAttributes="Bold"/>
+
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" >
                     <StackLayout Margin="0,25,0,-45" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <Grid>
@@ -42,7 +39,7 @@
                     <Label Text="Showing..." Margin="0,5,0,10" HorizontalOptions="End"></Label>
                 </StackLayout>
 
-                <CollectionView x:Name="collectionViewPlans" SelectionMode="Single" SelectionChanged="collectionViewPlans_SelectionChanged">
+                <CollectionView x:Name="collectionViewExercises" SelectionMode="Single" SelectionChanged="collectionViewExercises_SelectionChanged">
                     <CollectionView.ItemTemplate>
                         <DataTemplate >
                             <Grid Padding="5,-5,5,-5">
@@ -55,7 +52,7 @@
                                     <ColumnDefinition Width="125" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Name}" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding RoutineName}" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
                                 <Label Grid.Column="1" Grid.Row="0" Text="{Binding Description}" FontAttributes="Italic" VerticalOptions="End"/>
                             </Grid>
                         </DataTemplate>

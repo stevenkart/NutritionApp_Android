@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp_Android.Views.EditExerciseRoutinePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#EA4113</Color>
+            <Color x:Key="ColorRootButtons">#30DC62</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView Padding="14,15,14,10">
+            <FlexLayout Direction="Column"  AlignItems="Center">
+                <Label
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="18" Text="Edit the Routine"
+                    FontAttributes="Bold"/>
+
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="TxtId" Grid.Column="0"  Grid.Row="0" IsVisible="false"></Entry>
+
+                    <Label Text="Routine Name:" Grid.Column="0"  Grid.Row="0" HorizontalOptions="Start"></Label>
+                    <Label Text="ACTIONS" Grid.Column="1"  Grid.Row="0" HorizontalOptions="End"></Label>
+                    <Entry x:Name="TxtRoutineName" Grid.Column="0"  Grid.Row="0"></Entry>
+                    <Button x:Name="BtnEditName"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="0"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditName_Clicked"/>
+
+                    <Label Text="Description:" Grid.Column="0"  Grid.Row="1" ></Label>
+                    <Entry x:Name="TxtDescription" Grid.Column="0"  Grid.Row="1"></Entry>
+                    <Button x:Name="BtnEditDescription"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="1"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditDescription_Clicked"/>
+
+                    <Label Text="Example:" Grid.Column="0"  Grid.Row="2" ></Label>
+                    <Image x:Name="ImagePreview"  Grid.Column="0" Grid.Row="2" Source="" HeightRequest="100" HorizontalOptions="End" WidthRequest="100" Aspect="AspectFit" />
+
+                    <Label Text="Route Example Image:" Grid.Column="0"  Grid.Row="3" ></Label>
+                    <Entry x:Name="TxtExerciseXample" Grid.Column="0"  Grid.Row="3"></Entry>
+                    <Button x:Name="BtnEditExerciseXample"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="3"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditExerciseXample_Clicked"/>
+
+                    <Label Text="Routine State:" Grid.Column="0"  Grid.Row="4" ></Label>
+                    <Picker x:Name="PickerState" Title="Select a State" FontSize="14" Grid.Column="0"  Grid.Row="4" >
+                        <Picker.Triggers>
+                            <Trigger TargetType="Picker" Property="IsFocused" Value="True">
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </Trigger>
+                        </Picker.Triggers>
+                        <Picker.Items>
+                            <x:String>ACTIVATE</x:String>
+                            <x:String>INACTIVE</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Button x:Name="BtnEditState"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="4"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditState_Clicked"/>
+
+                </Grid>
+                <Label x:Name="LblError" Text="Something went wrong getting the Exercise Routines Data."></Label>
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,5" >
+                    <StackLayout Margin="0,30,0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Button x:Name="BtnExit" Text="Exit" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15"  MinimumWidthRequest="150" Clicked="BtnExit_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

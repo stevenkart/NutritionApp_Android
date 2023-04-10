@@ -2,9 +2,7 @@
 using NutritionApp_Android.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,16 +12,27 @@ using Xamarin.Forms.Xaml;
 namespace NutritionApp_Android.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ManageNutritionalPlansPage : ContentPage
+    public partial class ManageExerciseRoutinePage : ContentPage
     {
-        NutritionalPlanViewModel viewModel { get; set; }
+        ExerciseRoutineViewModel viewModel { get; set; }
         private int filter = 1;
-        public ManageNutritionalPlansPage()
+        public ManageExerciseRoutinePage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new NutritionalPlanViewModel();
+            BindingContext = viewModel = new ExerciseRoutineViewModel();
             LoadPlansList();
         }
+
+        private async void collectionViewExercises_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var itemSelected = e.CurrentSelection[0] as ExerciseRoutine;
+            if (itemSelected != null)
+            {
+                await DisplayAlert("Routine Selected ", $"{itemSelected.RoutineName}", "OK");
+                await Navigation.PushAsync(new EditExerciseRoutinePage(itemSelected.IdRoutine));
+            }
+        }
+
 
         protected override void OnAppearing() //metodo que al volver a mostrar la pagina, vuelve a refrescar la lista con la nueva DATA
         {
@@ -33,37 +42,16 @@ namespace NutritionApp_Android.Views
 
         private async void LoadPlansList()
         {
-            collectionViewPlans.ItemsSource = await viewModel.GetNutritionalPlansAll();
+            collectionViewExercises.ItemsSource = await viewModel.GetExercisesAll();
             BtnFilter.Text = "All";
 
-        }
-
-        private async void BtnExit_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
-        private async void BtnAdd_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddNutriPlanPage());
-
-        }
-
-        private async void collectionViewPlans_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var itemSelected = e.CurrentSelection[0] as NutritionalPlan;
-            if (itemSelected != null)
-            {
-                await DisplayAlert("Plan Selected ", $"{itemSelected.Name}", "OK");
-                await Navigation.PushAsync(new EditNutriPlanPage(itemSelected.IdPlan));  
-            }
         }
 
         private async void BtnFilter_Clicked(object sender, EventArgs e)
         {
             if (filter == 2)
             {
-                collectionViewPlans.ItemsSource = await viewModel.GetPlansByFilter(filter);
+                collectionViewExercises.ItemsSource = await viewModel.GetExercisesByFilter(filter);
                 BtnFilter.Text = "Inactive";
                 filter = 0;
             }
@@ -79,12 +67,23 @@ namespace NutritionApp_Android.Views
                 {
                     if (filter == 1)
                     {
-                        collectionViewPlans.ItemsSource = await viewModel.GetPlansByFilter(filter);
+                        collectionViewExercises.ItemsSource = await viewModel.GetExercisesByFilter(filter);
                         BtnFilter.Text = "Active";
                         filter = 2;
                     }
                 }
             }
+
+        }
+
+        private async void BtnAdd_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddExerciseRoutinePage());
+        }
+
+        private async void BtnExit_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

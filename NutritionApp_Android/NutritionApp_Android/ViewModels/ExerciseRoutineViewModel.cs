@@ -6,32 +6,33 @@ using System.Threading.Tasks;
 
 namespace NutritionApp_Android.ViewModels
 {
-    public class NutritionalPlanViewModel : BaseViewModel
+    public class ExerciseRoutineViewModel : BaseViewModel
     {
-        public NutritionalPlan MyNutritionalPlan { get; set; }
+        public ExerciseRoutine MyExerciseRoutine { get; set; }
 
-        public NutritionalPlanViewModel()
+        public ExerciseRoutineViewModel()
         {
-            MyNutritionalPlan = new NutritionalPlan();
- 
+            MyExerciseRoutine = new ExerciseRoutine();
+
         }
+
         //Funciones
         //carga lista de datos de planes
-        public async Task<List<NutritionalPlan>> GetNutritionalPlansAll()
+        public async Task<List<ExerciseRoutine>> GetExercisesAll()
         {
             try
             {
-                List<NutritionalPlan> plans = new List<NutritionalPlan>();
+                List<ExerciseRoutine> exercises = new List<ExerciseRoutine>();
 
-                plans = await MyNutritionalPlan.GetPlans();
+                exercises = await MyExerciseRoutine.GetExercises();
 
-                if (plans == null)
+                if (exercises == null)
                 {
                     return null;
                 }
                 else
                 {
-                    return plans;
+                    return exercises;
                 }
 
             }
@@ -41,21 +42,21 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
-        public async Task<List<NutritionalPlan>> GetPlansByFilter(int state)
+        public async Task<List<ExerciseRoutine>> GetExercisesByFilter(int state)
         {
             try
             {
-                List<NutritionalPlan> plans = new List<NutritionalPlan>();
+                List<ExerciseRoutine> exercises = new List<ExerciseRoutine>();
 
-                plans = await MyNutritionalPlan.GetByFilterPlanState(state);
+                exercises = await MyExerciseRoutine.GetByFilterExerciseState(state);
 
-                if (plans == null)
+                if (exercises == null)
                 {
                     return null;
                 }
                 else
                 {
-                    return plans;
+                    return exercises;
                 }
 
             }
@@ -65,7 +66,7 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
-        public async Task<bool> AddPlan(string pName, string pDescription, string pPlanXample, int pStates = 1)
+        public async Task<bool> AddExercise(string pRoutineName, string pDescription, string pExerciseXample, int pStates = 1)
         {
 
             if (IsBusy)
@@ -79,12 +80,12 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
-                MyNutritionalPlan.Name = pName;
-                MyNutritionalPlan.Description = pDescription;
-                MyNutritionalPlan.PlanXample = pPlanXample;
-                MyNutritionalPlan.IdState = pStates;
+                MyExerciseRoutine.RoutineName = pRoutineName;
+                MyExerciseRoutine.Description = pDescription;
+                MyExerciseRoutine.ExerciseXample = pExerciseXample;
+                MyExerciseRoutine.IdState = pStates;
 
-                bool R = await MyNutritionalPlan.AddPlan();
+                bool R = await MyExerciseRoutine.AddExercise();
 
                 return R;
 
@@ -100,22 +101,21 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-        
-        public async Task<NutritionalPlan> GetPlanData(int id)
+        public async Task<ExerciseRoutine> GetExerciseData(int id)
         {
             try
             {
-                NutritionalPlan plan = new NutritionalPlan();
+                ExerciseRoutine exercises = new ExerciseRoutine();
 
-                plan = await MyNutritionalPlan.GetSinglePlan(id);
+                exercises = await MyExerciseRoutine.GetSingleExercise(id);
 
-                if (plan == null)
+                if (exercises == null)
                 {
                     return null;
                 }
                 else
                 {
-                    return plan;
+                    return exercises;
                 }
 
             }
@@ -125,7 +125,7 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
-        public async Task<bool> UpdatePlanName(int id, NutritionalPlan nutritionalPlan)
+        public async Task<bool> UpdateExerciseName(int id, ExerciseRoutine exerciseRoutine)
         {
 
             if (IsBusy)
@@ -139,9 +139,9 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
-                MyNutritionalPlan = nutritionalPlan;
+                MyExerciseRoutine = exerciseRoutine;
 
-                bool R = await MyNutritionalPlan.PatchPlanName(id, MyNutritionalPlan.Name);
+                bool R = await MyExerciseRoutine.PatchExerciseName(id, MyExerciseRoutine.RoutineName);
 
                 return R;
 
@@ -157,7 +157,7 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-        public async Task<bool> UpdatePlanDescription(int id, NutritionalPlan nutritionalPlan)
+        public async Task<bool> UpdateExerciseDescription(int id, ExerciseRoutine exerciseRoutine)
         {
 
             if (IsBusy)
@@ -171,9 +171,9 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
-                MyNutritionalPlan = nutritionalPlan;
+                MyExerciseRoutine = exerciseRoutine;
 
-                bool R = await MyNutritionalPlan.PatchPlanDescription(id, MyNutritionalPlan.Description);
+                bool R = await MyExerciseRoutine.PatchExerciseDescription(id, MyExerciseRoutine.Description);
 
                 return R;
 
@@ -189,7 +189,7 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-        public async Task<bool> UpdatePlanXample(int id, NutritionalPlan nutritionalPlan)
+        public async Task<bool> UpdateExerciseXample(int id, ExerciseRoutine exerciseRoutine)
         {
 
             if (IsBusy)
@@ -203,9 +203,9 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
-                MyNutritionalPlan = nutritionalPlan;
+                MyExerciseRoutine = exerciseRoutine;
 
-                bool R = await MyNutritionalPlan.PatchPlanXample(id, MyNutritionalPlan.PlanXample);
+                bool R = await MyExerciseRoutine.PatchExerciseDescription(id, MyExerciseRoutine.ExerciseXample);
 
                 return R;
 
@@ -221,7 +221,7 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-        public async Task<bool> UpdatePlanState(int id, NutritionalPlan nutritionalPlan)
+        public async Task<bool> UpdateExerciseState(int id, ExerciseRoutine exerciseRoutine)
         {
 
             if (IsBusy)
@@ -235,9 +235,9 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
-                MyNutritionalPlan = nutritionalPlan;
+                MyExerciseRoutine = exerciseRoutine;
 
-                bool R = await MyNutritionalPlan.PatchPlanState(id, MyNutritionalPlan.IdState);
+                bool R = await MyExerciseRoutine.PatchExerciseState(id, MyExerciseRoutine.IdState);
 
                 return R;
 
@@ -253,6 +253,8 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+
     }
-
 }
