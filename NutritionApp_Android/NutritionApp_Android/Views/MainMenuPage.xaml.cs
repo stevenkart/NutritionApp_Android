@@ -39,6 +39,14 @@ namespace NutritionApp_Android.Views
             await Navigation.PushAsync(new ManageExerciseRoutinePage());
         }
 
-        
+        private async void BtnUser_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ManageMyAccountDetails());
+        }
+
+        private async void BtnReminder_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyRemindersList());
+        }
     }
 }

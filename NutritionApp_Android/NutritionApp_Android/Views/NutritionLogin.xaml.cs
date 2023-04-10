@@ -105,7 +105,6 @@ namespace NutritionApp_Android.Views
         {
             await Navigation.PushAsync(new PasswordRecoveryPage());
         }
-
         private void SwShowPassword_Toggled(object sender, ToggledEventArgs e)
         {
             if (SwShowPassword.IsToggled)

@@ -1,7 +1,6 @@
 ﻿using NutritionApp_Android.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +15,6 @@ namespace NutritionApp_Android.ViewModels
             MyNutritionalPlan = new NutritionalPlan();
  
         }
-
         //Funciones
         //carga lista de datos de planes
         public async Task<List<NutritionalPlan>> GetNutritionalPlansAll()
@@ -102,6 +100,7 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+        
         public async Task<NutritionalPlan> GetPlanData(int id)
         {
             try
@@ -254,20 +253,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }

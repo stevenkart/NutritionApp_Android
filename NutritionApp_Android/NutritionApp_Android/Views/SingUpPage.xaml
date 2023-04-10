@@ -18,6 +18,7 @@
                 <Entry x:Name="TxtFullName" Placeholder="Full Name" Keyboard="Default" FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -27,6 +28,7 @@
                 <Entry x:Name="TxtPhone" Placeholder="Phone Number" Keyboard="Telephone"  FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -36,6 +38,7 @@
                 <Entry x:Name="TxtEmail" Placeholder="Email Address" Keyboard="Email"  FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -45,6 +48,7 @@
                 <Entry x:Name="TxtPassword" Placeholder="Password" Keyboard="Default"  IsPassword="True" FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                             <Setter Property="MaxLength" Value="16"/>
@@ -55,7 +59,8 @@
                 <Entry x:Name="TxtWeight" Placeholder="Weight in Kg" Keyboard="Numeric"  FontSize="14" >
                     <Entry.Triggers>
                     <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="TextColor" Value="White" />
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
                     </Entry.Triggers>
@@ -64,6 +69,7 @@
                 <Entry x:Name="TxtHight" Placeholder="Hight in cm" Keyboard="Numeric"  FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -73,6 +79,7 @@
                 <Entry x:Name="TxtAge" Placeholder="Age" Keyboard="Numeric"  FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -82,6 +89,7 @@
                 <Entry x:Name="TxtFat" Placeholder="Fat Percent" Keyboard="Numeric"  FontSize="14" >
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
                             <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
@@ -90,8 +98,8 @@
 
                 <Picker x:Name="PickerUserGenre" Title="Select a Genre" FontSize="14" >
                     <Picker.Triggers>
-                    <Trigger TargetType="Picker" Property="IsFocused" Value="True">
-                        <Setter Property="TextColor" Value="White" />
+                        <Trigger TargetType="Picker" Property="IsFocused" Value="True">
+                            <Setter Property="TextColor" Value="White" />
                             <Setter Property="FontAttributes" Value="Bold" />
                         </Trigger>
                     </Picker.Triggers>

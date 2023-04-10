@@ -19,15 +19,7 @@ namespace NutritionApp_Android.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new UserViewModel();
-            TxtRecoveryCode.IsVisible = false;
-            BtnCkRecoveryCode.IsVisible = false;
-
-            TxtPassword.IsVisible = false;
-            TxtPasswordConfirm.IsVisible = false;
-            BtnConfirmPassword.IsVisible = false;
         }
-
- 
         private async void BtnSendRecoveryCode_Clicked(object sender, EventArgs e)
         {
             try
@@ -221,7 +213,5 @@ namespace NutritionApp_Android.Views
             GlobalObjects.LocalUser = null;
             await Navigation.PopAsync(); //pushh async almacena aun la data de pagina visitada / en cambio PopAsync elimina la data y retorna la pagina anterior
         }
-
-       
     }
 }
