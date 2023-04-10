@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp_Android.Views.ManageExerciseRoutinePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#EA4113</Color>
+            <Color x:Key="ColorRootButtons">#30DC62</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="14,15,14,10">
+            <FlexLayout Direction="Column">
+                <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                       HorizontalTextAlignment="Center" FontSize="18" Text="Manage The Exercises Routines" FontAttributes="Bold"/>
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" >
+                    <StackLayout Margin="0,25,0,-45" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="BtnExit" Text="Exit" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="0" Grid.Row="0" Clicked="BtnExit_Clicked"/>
+                            <Button x:Name="BtnAdd"  Text="Add"  BackgroundColor="Green" FontSize="12" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="1" Grid.Row="0" Clicked="BtnAdd_Clicked"/>
+                            <Button x:Name="BtnFilter"  Text="Filter"  BackgroundColor="LightBlue" FontSize="12" TextColor="Black" FontAttributes="Bold" 
+                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="2" Grid.Row="0" Clicked="BtnFilter_Clicked"/>
+                        </Grid>
+                    </StackLayout>
+                    <Label Text="Showing..." Margin="0,5,0,10" HorizontalOptions="End"></Label>
+                </StackLayout>
+
+                <CollectionView x:Name="collectionViewExercises" SelectionMode="Single" SelectionChanged="collectionViewExercises_SelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid Padding="5,-5,5,-5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="125" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding RoutineName}" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Description}" FontAttributes="Italic" VerticalOptions="End"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </FlexLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
