@@ -1,4 +1,7 @@
-﻿using System;
+
+
+﻿using NutritionApp_Android.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +15,11 @@ namespace NutritionApp_Android.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManageNutritionalPlansPage : ContentPage
     {
+        NutritionalPlanViewModel viewModel { get; set; }
         public ManageNutritionalPlansPage()
         {
             InitializeComponent();
+            BindingContext = viewModel = new NutritionalPlanViewModel();
         }
 
         private async void BtnExit_Clicked(object sender, EventArgs e)

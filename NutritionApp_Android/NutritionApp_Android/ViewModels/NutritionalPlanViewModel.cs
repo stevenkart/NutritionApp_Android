@@ -8,8 +8,6 @@ namespace NutritionApp_Android.ViewModels
 {
     public class NutritionalPlanViewModel : BaseViewModel
     {
-
-
         //VM gestiona los cambios que ocurren entre M y V.
         public NutritionalPlan MyNutritionalPlan { get; set; }
 
@@ -59,9 +57,5 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
-
-
-
     }
 }
