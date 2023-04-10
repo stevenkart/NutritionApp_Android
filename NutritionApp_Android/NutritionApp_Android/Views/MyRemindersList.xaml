@@ -28,7 +28,7 @@
                             CornerRadius="15" Clicked="BtnCancel_Clicked"/>
 
 
-            <Label Text="Reminders List" Padding="20 0 0 0" FontSize="30" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            <Label Text="Reminders List" Padding="20,0,0,0" FontSize="30" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
 
 
             <ListView x:Name="ReminderListView">

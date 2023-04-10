@@ -12,108 +12,102 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-       
-        <StackLayout Padding="15,50,14,10">
+        <ScrollView>
+            <StackLayout Padding="15,50,14,10">
+                <Label Text="Full Name" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
+                <Entry x:Name="TxtFullName" Placeholder="Full Name" Keyboard="Default" FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Full Name" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Phone" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtFullName" Placeholder="Full Name" Keyboard="Default" FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtPhone" Placeholder="Phone Number" Keyboard="Telephone"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Phone" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Email" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtPhone" Placeholder="Phone Number" Keyboard="Telephone"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtEmail" Placeholder="Email Address" Keyboard="Email"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Email" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Weight kg" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtEmail" Placeholder="Email Address" Keyboard="Email"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtWeight" Placeholder="Weight in Kg" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Weight kg" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Height cm" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtWeight" Placeholder="Weight in Kg" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtHeight" Placeholder="Hight in cm" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Height cm" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Age" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtHeight" Placeholder="Hight in cm" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtAge" Placeholder="Age" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
-            <Label Text="Age" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="Fat percent %" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="TxtAge" Placeholder="Age" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
-
-            <Label Text="Fat percent %" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-
-            <Entry x:Name="TxtFat" Placeholder="Fat Percent" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
-                <Entry.Triggers>
-                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                        <Setter Property="BackgroundColor" Value="Black"/>
-                        <Setter Property="TextColor" Value="White" />
-                        <Setter Property="FontAttributes" Value="Bold" />
-                    </Trigger>
-                </Entry.Triggers>
-            </Entry>
+                <Entry x:Name="TxtFat" Placeholder="Fat Percent" Keyboard="Numeric"  FontSize="14" HorizontalTextAlignment="Center">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
 
 
 
-            <StackLayout Padding="20,10,20,20">
-                <Button x:Name="BtnUpdate" Text="Update" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnUpdate_Clicked"/>
-                <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
-                            CornerRadius="15" Clicked="BtnCancel_Clicked" />
-                <Button x:Name="BtnChangePassword" Text="Change password" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold" CornerRadius="15" 
-                        Clicked="BtnChangePassword_Clicked"/>
+                <StackLayout Padding="20,10,20,20">
+                    <Button x:Name="BtnUpdate" Text="Update" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnUpdate_Clicked"/>
+                    <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                                CornerRadius="15" Clicked="BtnCancel_Clicked" />
+                    <Button x:Name="BtnChangePassword" Text="Change password" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold" CornerRadius="15" 
+                            Clicked="BtnChangePassword_Clicked"/>
+                </StackLayout>
             </StackLayout>
-
-
-        </StackLayout>
-
-        
-
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

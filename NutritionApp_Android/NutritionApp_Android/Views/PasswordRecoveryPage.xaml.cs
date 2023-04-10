@@ -143,7 +143,7 @@ namespace NutritionApp_Android.Views
 
                 TxtRecoveryCode.IsEnabled = false;
                 BtnCkRecoveryCode.IsEnabled = false;
-                await DisplayAlert("Validation Successfulr", "Please Change the password!", "OK");
+                await DisplayAlert("Validation Successfull", "Please Change the password!", "OK");
                 return;
             }
             else
