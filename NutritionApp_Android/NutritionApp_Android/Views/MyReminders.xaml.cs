@@ -30,10 +30,14 @@ namespace NutritionApp_Android.Views
 
             int IdReminder = GlobalObjects.LocalReminder.IdReminder;
 
-            if (IdReminder > 0) 
-            {
+            string Detail = GlobalObjects.LocalReminder.Detail;
 
-                string Detail = GlobalObjects.LocalReminder.Detail;
+            if (IdReminder > 0 && !string.IsNullOrWhiteSpace( Detail )) 
+            {
+                BtnDelete.IsEnabled = true; ;
+
+                BtnSaveReminder.Text = "Update Reminder";
+
                 DateTime Date = Convert.ToDateTime( GlobalObjects.LocalReminder.Date );
                 string H = GlobalObjects.LocalReminder.Hour;
 
@@ -45,6 +49,14 @@ namespace NutritionApp_Android.Views
                 TxtDetail.Text = Detail;
                 TxtDate.Date = Date.Date;
                 TxtTime.Time = Hour;
+
+            }
+            else
+            {
+
+                BtnSaveReminder.Text = "Save Reminder";
+                BtnDelete.IsEnabled = false;
+
             }
 
         }
@@ -60,13 +72,27 @@ namespace NutritionApp_Android.Views
 
             string Detail = TxtDetail.Text.Trim();
 
+            string BtnText = BtnSaveReminder.Text;
+
             if ( !string.IsNullOrEmpty( Detail ) )
             {
 
                 string Date = TxtDate.Date.ToString();
                 string Hour = TxtTime.Time.ToString();
 
-                R = await viewModel.AddReminder(Detail, Date, Hour);
+
+                if ( BtnText.Equals("Save Reminder") )
+                {
+                    R = await viewModel.AddReminder(Detail, Date, Hour);
+                }
+                
+                if ( BtnText.Equals("Update Reminder") )
+                {
+                    R = await viewModel.UpdateReminder(Detail, Date, Hour, true);
+                }
+
+                
+
             }
             else
             {
@@ -79,7 +105,16 @@ namespace NutritionApp_Android.Views
 
             if (R)
             {
-                await DisplayAlert(":)", "Reminder Save Successfully!", "OK");
+
+                if( BtnText.Equals("Save Reminder") )
+                {
+                    await DisplayAlert(":)", "Reminder Save Successfully!", "OK");
+                }
+
+                if (BtnText.Equals("Update Reminder"))
+                {
+                    await DisplayAlert(":)", "Reminder Update Successfully!", "OK");
+                }
 
                 await Navigation.PushAsync(new MainMenuPage());
             }
@@ -89,5 +124,29 @@ namespace NutritionApp_Android.Views
             }
 
         }
+
+        private async void BtnDelete_Clicked(object sender, EventArgs e)
+        {
+
+            string Detail = "Reminder Deleted";
+            string Date = TxtDate.Date.ToString();
+            string Hour = TxtTime.Time.ToString();
+
+            bool R = await viewModel.UpdateReminder(Detail, Date, Hour, false);
+
+            if (R)
+            {
+                await DisplayAlert(":)", "Reminder Delete Successfully!", "OK");
+
+                await Navigation.PushAsync(new MainMenuPage());
+            }
+            else
+            {
+                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+            }
+        }
+
+        
+
     }
 }

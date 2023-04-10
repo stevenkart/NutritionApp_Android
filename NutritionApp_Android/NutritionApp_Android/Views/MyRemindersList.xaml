@@ -16,25 +16,26 @@
   
 
 
-            <StackLayout Padding="20,0,20,0" VerticalOptions="Center">
+            <StackLayout Padding="20,30,20,0" VerticalOptions="Center">
 
 
 
 
-                <Button x:Name="BtnAddReminder" Text="Add" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnAddReminder_Clicked" />
-                <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                <Button x:Name="BtnAddReminder" Text="Add Reminder" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnAddReminder_Clicked" />
+            <Button x:Name="BtnUpdateReminder" Text="Update Reminder" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold"
+                            CornerRadius="15" Clicked="BtnUpdateReminder_Clicked" />
+            <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15" Clicked="BtnCancel_Clicked"/>
-                <Button x:Name="BtnUpdateReminder" Text="Update" Clicked="BtnUpdateReminder_Clicked"/>
 
 
+            <Label Text="Reminders List" Padding="20 0 0 0" FontSize="30" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
 
-            
-                
-            <ListView x:Name="ReminderListView">    
+
+            <ListView x:Name="ReminderListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout >
                                 <Label Text="{Binding Detail}" FontSize="20" />
                                 <Label Text="{Binding Date}" IsVisible="false" />
                                 <Label Text="{Binding Hour}" IsVisible="false" />

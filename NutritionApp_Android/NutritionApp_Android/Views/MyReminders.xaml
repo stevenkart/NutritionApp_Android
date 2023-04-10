@@ -48,6 +48,8 @@
                     <Button x:Name="BtnSaveReminder" Text="Save Reminder" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnSaveReminder_Clicked"/>
                     <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15" Clicked="BtnCancel_Clicked"/>
+                    <Button x:Name="BtnDelete" Text="Delete Reminder" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold"
+                            CornerRadius="15" IsEnabled="false" Clicked="BtnDelete_Clicked" />
                 </StackLayout>
 
             </StackLayout>

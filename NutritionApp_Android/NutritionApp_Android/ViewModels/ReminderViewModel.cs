@@ -66,6 +66,50 @@ namespace NutritionApp_Android.ViewModels
 
 
 
+        public async Task<bool> UpdateReminder(
+                                        string pDetail,
+                                        string pDate,
+                                        string pHour,
+                                        bool pDone
+                                        )
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                MyReminder.Detail = pDetail;
+                MyReminder.Date = Convert.ToString(pDate);
+                MyReminder.Hour = Convert.ToString(pHour);
+                MyReminder.Done = pDone;
+
+                bool R = await MyReminder.UpdateReminder();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        
+
         public async Task<List<Reminders>> GetReminders()
         {
             try
