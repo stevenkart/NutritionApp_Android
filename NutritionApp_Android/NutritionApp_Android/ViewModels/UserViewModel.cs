@@ -232,6 +232,120 @@ namespace NutritionApp_Android.ViewModels
             {
                 bool R = await MyUser.DeleteRecoveryCode(pId);
 
+        public async Task<bool> UpdateUser(
+                                        string pName,
+                                        string pPhoneNum,
+                                        string pEmailAddress,
+                                        decimal pW,
+                                        decimal pH,
+                                        int pAges,
+                                        decimal pFat)
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                MyUser.FullName = pName;
+                MyUser.Phone = pPhoneNum;
+                MyUser.Email = pEmailAddress;
+                MyUser.Weight = pW;
+                MyUser.Hight = pH;
+                MyUser.Age = pAges;
+                MyUser.FatPercent = pFat;
+
+                bool R = await MyUser.UpdateUser();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+
+
+        public async Task<bool> UpdatePassword( string pPassword )
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                MyUser.Password = pPassword;
+
+                bool R = await MyUser.UpdatePassword();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public async Task<bool> AddRecoveryCode()
+                                       // decimal pCode)
+        {
+
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+
+                int pCode = 25;
+                //MyUser.RecoveryCode = pCode;
+                
+                bool R = await MyUser.AddRecoveryCode(1, "recoveryCode", pCode);
+
+                //UNA VEZ QUE SE HAYA GUARDADO CORRECTAMENTE EL RECOVERYCODE, SE ENVIA EL EMAIL
+                if (R)
+                {
+                    MyEmail.SendTo = "robertstevenumca0@gmail.com";
+                    MyEmail.Subject = "AppNutritio Password Recovery Code";
+                    MyEmail.Message = string.Format("Your recovery code is: {0}", pCode);
+
+                    R = (MyEmail.SendEmail());
+
+                }
                 return R;
 
             }

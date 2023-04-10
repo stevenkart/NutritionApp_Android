@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="My Reminders"
+             x:Class="NutritionApp_Android.Views.MyReminders">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#EA4113</Color>
+            <Color x:Key="ColorRootButtons">#30DC62</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <Grid Padding="20, 20, 20, 0">
+
+            
+
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+
+                <StackLayout Padding="10,0,10,30" VerticalOptions="Center">
+
+                    <Entry x:Name="TxtDetail" Placeholder="Detail Reminder" Keyboard="Default"
+                           FontSize="16" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                <Setter Property="BackgroundColor" Value="Black"/>
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+
+                    <Label Text="Date" FontSize="22" FontAttributes="Bold"  HorizontalTextAlignment="Center" TextColor="Black"/>
+                    
+                    <DatePicker x:Name="TxtDate" FontSize="25" Format="d" HorizontalOptions="FillAndExpand"/>
+
+                    <Label Text="Time" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black"/>
+
+                    <TimePicker x:Name="TxtTime" FontSize="25" Format="t"  HorizontalOptions="FillAndExpand"/>
+
+
+
+                </StackLayout>
+
+                <StackLayout Padding="20,10,20,20">
+                    <Button x:Name="BtnSaveReminder" Text="Save Reminder" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" Clicked="BtnSaveReminder_Clicked"/>
+                    <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15" Clicked="BtnCancel_Clicked"/>
+                    <Button x:Name="BtnDelete" Text="Delete Reminder" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold"
+                            CornerRadius="15" IsEnabled="false" Clicked="BtnDelete_Clicked" />
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

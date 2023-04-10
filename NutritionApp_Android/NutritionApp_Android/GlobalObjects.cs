@@ -16,5 +16,6 @@ namespace NutritionApp_Android
 
         public static UserDTO LocalUser = new UserDTO();
 
+        public static Reminders LocalReminder = new Reminders();
     }
 }

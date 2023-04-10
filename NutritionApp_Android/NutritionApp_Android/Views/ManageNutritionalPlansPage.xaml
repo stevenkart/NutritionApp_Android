@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:NutritionApp_Android.ViewModels" x:DataType="viewmodels:NutritionalPlanViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:NutritionApp_Android.ViewModels"
+             x:DataType="viewmodels:NutritionalPlanViewModel"
              x:Class="NutritionApp_Android.Views.ManageNutritionalPlansPage"
              Title="ManageNutritionPlans">
     <ContentPage.Resources>
@@ -20,52 +22,41 @@
                     HorizontalOptions="CenterAndExpand"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
-                    FontSize="22" Text="Manage The Nutritional Plans"/>         
-                      <CollectionView x:Name="collectionViewPlans">
-                          <CollectionView.ItemsSource>
-                              <x:Array Type="{x:Type x:String}">
-                                  <x:String>Can</x:String>
-                                  <x:String>gre</x:String>
-                                  <x:String>gdfg</x:String>
-                                  <x:String>dgf</x:String>
-                              </x:Array>
+                    FontSize="22" Text="Manage The Nutritional Plans"/>
+                  
+                    
 
-                          </CollectionView.ItemsSource>
+                    <Grid Padding="5, 5, 5, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                      </CollectionView>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-
-                      <Grid Padding="5, 5, 5, 0">
-                          <Grid.RowDefinitions>
-                              <RowDefinition Height="*" />
-                              <RowDefinition Height="*" />
-                          </Grid.RowDefinitions>
-
-                          <Grid.ColumnDefinitions>
-                              <ColumnDefinition Width="*" />
-                              <ColumnDefinition Width="*" />
-                          </Grid.ColumnDefinitions>
-
-                          <Button Grid.Row="0" Grid.Column="0"
-                           x:Name="BtnAdd"
-                           Text="Add" 
-                           BackgroundColor="Green"
-                           HeightRequest="50"
-                           WidthRequest="50"
-                           FontSize="12"
-                           CornerRadius="15"
-                           Clicked="BtnAdd_Clicked"/>
-                          <Button Grid.Row="0" Grid.Column="1" 
-                           x:Name="BtnEdit"
-                           Text="Edit" 
-                           BackgroundColor="Orange"
-                           HeightRequest="50"
-                           WidthRequest="50"
-                           FontSize="12"
-                           CornerRadius="15"
-                           Clicked="BtnEdit_Clicked"/>
-                      </Grid>
-                  </FlexLayout>
+                        <Button Grid.Row="0" Grid.Column="0"
+                         x:Name="BtnAdd"
+                         Text="Add" 
+                         BackgroundColor="Green"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         FontSize="12"
+                         CornerRadius="15"
+                         Clicked="BtnAdd_Clicked"/>
+                        <Button Grid.Row="0" Grid.Column="1" 
+                         x:Name="BtnEdit"
+                         Text="Edit" 
+                         BackgroundColor="Orange"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         FontSize="12"
+                         CornerRadius="15"
+                         Clicked="BtnEdit_Clicked"/>
+                    </Grid>
+                </FlexLayout>
                 <StackLayout Padding="10,5,10,5">
                     <Button x:Name="BtnExit" Text="Exit" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15" Clicked="BtnExit_Clicked"/>
