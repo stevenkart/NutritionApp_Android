@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.JsonPatch;
 using System.Net.Http;
 using System.Collections;
+using Xamarin.Essentials;
 using NutritionApp_Android.ViewModels;
 
 
@@ -21,6 +22,7 @@ namespace NutritionApp_Android.Models
 
         public User()
         {
+
         }
 
         public int IdUser { get; set; }
@@ -41,7 +43,6 @@ namespace NutritionApp_Android.Models
         public virtual NutritionalPlan? IdPlanNavigation { get; set; } = null!;
         public virtual ExerciseRoutine? IdRoutineNavigation { get; set; } = null!;
         public virtual State? IdStateNavigation { get; set; } = null!;
-
 
 
         //Funciones
@@ -88,9 +89,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
-
-
         public async Task<bool> AddUser()
         {
             try
@@ -210,15 +208,10 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
-
         public async Task<bool> UpdatePassword()
         {
             try
             {
-
-
-
                 this.IdUser = GlobalObjects.LocalUser.Id;
 
                 string RouteSufix = string.Format("Users/{0}", this.IdUser);
@@ -276,104 +269,12 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-        //Funciones
         public async Task<bool> ValidateRecoveryCode()
         {
             try
             {
-                string RouteSufix = string.Format("Users/ValidateCode?pEmail={0}&pCode={1}", this.Email, this.RecoveryCode);
-
-                //con esto obtenemos la ruta completa de consumo
-                string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
-
-                RestClient client = new RestClient(URL);
-
-                Request = new RestRequest(URL, Method.Get);
-
-                //Agregamos la info de la llave de seguridad (ApiKey)
-                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
-                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
-
-                //ejecucion de la llamada al controlador
-                RestResponse response = await client.ExecuteAsync(Request);
-
-                HttpStatusCode statusCode = response.StatusCode;
-
-                if (statusCode == HttpStatusCode.OK)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                string ErrorMsg = ex.Message;
-
-                //almacenar registro de errores en una bitacora para analisis posteriores
-                //tambien puede ser enviarlos a un servidor de captura de errores
-
-                throw;
-            }
-        }
-
-
-
-        public async Task<bool> AddRecoveryCode(int id, string pPath, int pValue)
-        {
-            try
-            {
-                string RouteSufix = string.Format("Users/{0}", id);
-
-                //con esto obtenemos la ruta completa deonsumo
-                string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
-
-                RestClient client = new RestClient(URL);
-
-                Request = new RestRequest(URL, Method.Patch);
-
-
-                //Agregamos la info de la llave de seguridad (ApiKey)
-
-                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
-                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
-
-    
-                //usamos JsonPatch para ejecutar la sentencia de update correctamente tomando como metodo .Replace y
-                //psanado parametro, el Path o ruta(nombre columna) & el valor a tomar
-                var patch = new JsonPatchDocument();
-                patch.Replace(pPath, pValue);
-
-                string SerializedModel = JsonConvert.SerializeObject(patch);
-                Request.AddBody(SerializedModel, GlobalObjects.PatchType);
-                RestResponse response = await client.ExecuteAsync(Request);
-
-                HttpStatusCode statusCode = response.StatusCode;
-
-                if (statusCode == HttpStatusCode.OK)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                string ErrorMsg = ex.Message;
-
-                //almacenar registro de errores en una bitacora para analisis posteriores
-                //tambien puede ser enviarlos a un servidor de captura de errores
-
-                throw;
-            }
-        }
                 string RouteSufix = string.Format("Users/ValidateRecoveryCode?pEmail={0}&pRecoveryCode={1}", this.Email, this.RecoveryCode);
 
-
                 //con esto obtenemos la ruta completa de consumo
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
 
@@ -409,7 +310,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
         public async Task<bool> AddRecoveryCode(int id, int pValue)
         {
             try
@@ -460,7 +360,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
         public async Task<bool> DeleteRecoveryCode(int id)
         {
             try
@@ -511,8 +410,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
-
         public async Task<bool> ChangePassword(int id, string pValue)
         {
             try
@@ -563,7 +460,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
 
 
 

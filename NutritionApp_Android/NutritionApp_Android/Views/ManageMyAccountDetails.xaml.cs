@@ -16,7 +16,7 @@ namespace NutritionApp_Android.Views
     public partial class ManageMyAccountDetails : ContentPage
     {
 
-        UserViewModel viewModel;
+        UserViewModel viewModel { get; set; }
 
         public ManageMyAccountDetails()
         {
@@ -25,7 +25,7 @@ namespace NutritionApp_Android.Views
             LoadPage();
         }
 
-        public async void LoadPage()
+        public void LoadPage()
         {
             UserDTO User = GlobalObjects.LocalUser;
 

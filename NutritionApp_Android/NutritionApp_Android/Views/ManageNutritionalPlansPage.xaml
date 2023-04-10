@@ -17,7 +17,7 @@
             <FlexLayout Direction="Column">
                 <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
                        HorizontalTextAlignment="Center" FontSize="18" Text="Manage The Nutritional Plans" FontAttributes="Bold"/>
-                
+
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" >
                     <StackLayout Margin="0,25,0,-45" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <Grid>

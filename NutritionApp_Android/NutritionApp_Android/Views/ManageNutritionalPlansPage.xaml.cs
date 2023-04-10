@@ -16,7 +16,7 @@ namespace NutritionApp_Android.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManageNutritionalPlansPage : ContentPage
     {
-        NutritionalPlanViewModel viewModel { get; set; }
+        NutritionalPlanViewModel viewModel;
         private int filter = 1;
         public ManageNutritionalPlansPage()
         {
@@ -55,7 +55,7 @@ namespace NutritionApp_Android.Views
             if (itemSelected != null)
             {
                 await DisplayAlert("Plan Selected ", $"{itemSelected.Name}", "OK");
-                await Navigation.PushAsync(new EditNutriPlanPage(itemSelected.IdPlan));  
+                await Navigation.PushAsync(new EditNutriPlanPage(itemSelected.IdPlan));
             }
         }
 
