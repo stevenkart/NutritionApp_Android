@@ -67,7 +67,8 @@
                          HeightRequest="100"
                          WidthRequest="100"
                          FontSize="14"
-                         CornerRadius="20"/>
+                         CornerRadius="20"
+                         Clicked="BtnNutritionalPlan_Clicked"/>
                         
                         <Button Grid.Row="1" Grid.Column="1" 
                          x:Name="BtnExercise"

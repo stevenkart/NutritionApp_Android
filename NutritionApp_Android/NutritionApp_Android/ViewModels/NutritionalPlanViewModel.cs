@@ -1,6 +1,11 @@
 ﻿using NutritionApp_Android.Models;
+using NutritionApp_Android.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +13,7 @@ namespace NutritionApp_Android.ViewModels
 {
     public class NutritionalPlanViewModel : BaseViewModel
     {
-        public NutritionalPlan MyNutritionalPlan { get; set; }
+        public NutritionalPlan MyNutritionalPlan;
 
         public NutritionalPlanViewModel()
         {
@@ -100,7 +105,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-        
         public async Task<NutritionalPlan> GetPlanData(int id)
         {
             try
@@ -125,6 +129,34 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
+
+
+        public async Task<List<NutritionalPlan>> GetCollectionPlanData(int id)
+        {
+            try
+            {
+                List<NutritionalPlan> plan = new List<NutritionalPlan>();
+
+                plan = await MyNutritionalPlan.GetNutritionalPlansFilterId(id);
+
+                if (plan == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return plan;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+     
         public async Task<bool> UpdatePlanName(int id, NutritionalPlan nutritionalPlan)
         {
 
@@ -253,6 +285,8 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+  
     }
 
 }
