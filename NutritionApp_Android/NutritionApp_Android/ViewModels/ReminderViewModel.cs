@@ -44,7 +44,7 @@ namespace NutritionApp_Android.ViewModels
                 MyReminder.Detail = pDetail;
                 MyReminder.Date = Convert.ToString( pDate );
                 MyReminder.Hour = Convert.ToString( pHour );
-                MyReminder.Done = true;
+                MyReminder.Done = false;
                 MyReminder.IdUser = pIdUser;
 
                 bool R = await MyReminder.AddReminder();

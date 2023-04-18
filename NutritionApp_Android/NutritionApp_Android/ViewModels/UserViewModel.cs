@@ -384,5 +384,40 @@ namespace NutritionApp_Android.ViewModels
             }
         }
 
+
+        public async Task<bool> ChangeNutritionalPlan(int pId, int pIdPlan)
+        {
+            bool R = false;
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+                R = await MyUser.ChangePlan(pId, pIdPlan);
+ 
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+
+
+
     }
 }
