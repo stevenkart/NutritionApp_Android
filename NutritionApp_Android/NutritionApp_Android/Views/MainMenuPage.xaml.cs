@@ -48,5 +48,10 @@ namespace NutritionApp_Android.Views
         {
             await Navigation.PushAsync(new MyRemindersList());
         }
+
+        private async void BtnNutritionalPlan_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NutritionalPlansPage());
+        }
     }
 }

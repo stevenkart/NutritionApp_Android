@@ -16,12 +16,12 @@ namespace NutritionApp_Android.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManageNutritionalPlansPage : ContentPage
     {
-        NutritionalPlanViewModel viewModel;
+        NutritionalPlanViewModel vm { get; set; }
         private int filter = 1;
         public ManageNutritionalPlansPage()
         {
-            InitializeComponent();
-            BindingContext = viewModel = new NutritionalPlanViewModel();
+            InitializeComponent(); 
+            BindingContext = vm = new NutritionalPlanViewModel();
             LoadPlansList();
         }
 
@@ -33,7 +33,7 @@ namespace NutritionApp_Android.Views
 
         private async void LoadPlansList()
         {
-            collectionViewPlans.ItemsSource = await viewModel.GetNutritionalPlansAll();
+            collectionViewPlans.ItemsSource = await vm.GetNutritionalPlansAll();
             BtnFilter.Text = "All";
 
         }
@@ -63,7 +63,7 @@ namespace NutritionApp_Android.Views
         {
             if (filter == 2)
             {
-                collectionViewPlans.ItemsSource = await viewModel.GetPlansByFilter(filter);
+                collectionViewPlans.ItemsSource = await vm.GetPlansByFilter(filter);
                 BtnFilter.Text = "Inactive";
                 filter = 0;
             }
@@ -79,7 +79,7 @@ namespace NutritionApp_Android.Views
                 {
                     if (filter == 1)
                     {
-                        collectionViewPlans.ItemsSource = await viewModel.GetPlansByFilter(filter);
+                        collectionViewPlans.ItemsSource = await vm.GetPlansByFilter(filter);
                         BtnFilter.Text = "Active";
                         filter = 2;
                     }

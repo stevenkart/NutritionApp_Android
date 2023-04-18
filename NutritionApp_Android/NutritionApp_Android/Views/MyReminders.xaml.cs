@@ -47,7 +47,7 @@ namespace NutritionApp_Android.Views
                        );
 
                 TxtDetail.Text = Detail;
-                TxtDate.Date = Date.Date;
+                TxtDate.Date = Date;
                 TxtTime.Time = Hour;
 
             }
@@ -61,9 +61,9 @@ namespace NutritionApp_Android.Views
 
         }
 
-        private void BtnCancel_Clicked(object sender, EventArgs e)
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
         private async void BtnSaveReminder_Clicked(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace NutritionApp_Android.Views
             if ( !string.IsNullOrEmpty( Detail ) )
             {
 
-                string Date = TxtDate.Date.ToString();
+                string Date = TxtDate.Date.ToString("yyyy-MM-dd");
                 string Hour = TxtTime.Time.ToString();
 
 
@@ -109,18 +109,18 @@ namespace NutritionApp_Android.Views
                 if( BtnText.Equals("Save Reminder") )
                 {
                     await DisplayAlert(":)", "Reminder Save Successfully!", "OK");
+                    await Navigation.PopAsync();
                 }
 
                 if (BtnText.Equals("Update Reminder"))
                 {
                     await DisplayAlert(":)", "Reminder Update Successfully!", "OK");
+                    await Navigation.PopAsync();
                 }
-
-                await Navigation.PushAsync(new MainMenuPage());
             }
             else
             {
-                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                await DisplayAlert(":(", "Somenthing went wrong! check the information", "OK");
             }
 
         }
@@ -138,7 +138,7 @@ namespace NutritionApp_Android.Views
             {
                 await DisplayAlert(":)", "Reminder Delete Successfully!", "OK");
 
-                await Navigation.PushAsync(new MainMenuPage());
+                await Navigation.PopAsync();
             }
             else
             {
