@@ -79,12 +79,16 @@ namespace NutritionApp_Android.Views
                 //await DisplayAlert("Validation ok", "Welcome!", "OK");
 
                 GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
-  
 
-                await Navigation.PushAsync(new MainMenuPage());
-
-                //Application.Current.MainPage = new MainMenuPage();
-
+                if (GlobalObjects.LocalUser.IdStates == 2)
+                {
+                    await DisplayAlert("Validation Error", "User is inactive!, contact the administrators to activate", "OK");
+                    GlobalObjects.LocalUser = null;
+                }
+                else
+                {
+                    await Navigation.PushAsync(new MainMenuPage());
+                }
                 return;
             }
             else

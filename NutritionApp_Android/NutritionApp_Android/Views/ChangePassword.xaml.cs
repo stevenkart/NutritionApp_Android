@@ -85,7 +85,7 @@ namespace NutritionApp_Android.Views
 
                         await DisplayAlert(":)", "Password Updated Successfully!", "OK");
 
-                        await Navigation.PushAsync(new ManageMyAccountDetails());
+                        await Navigation.PopAsync();
                     }
                     else
                     {
@@ -112,7 +112,7 @@ namespace NutritionApp_Android.Views
 
         private async void BtnCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ManageMyAccountDetails());
+            await Navigation.PopAsync();
         }
 
         private void SwShowPassword_Toggled(object sender, ToggledEventArgs e)

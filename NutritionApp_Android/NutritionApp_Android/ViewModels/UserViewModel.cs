@@ -301,7 +301,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
         public async Task<bool> UserRecoveryCodeValidation(string pEmail, int pRecoveryCode)
         {
             if (IsBusy)
@@ -334,7 +333,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
         public async Task<bool> ChangePassword(int pId, string pPassword)
         {
             bool R = false;
@@ -383,8 +381,6 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
-
-
         public async Task<bool> ChangeNutritionalPlan(int pId, int pIdPlan)
         {
             bool R = false;
@@ -401,6 +397,36 @@ namespace NutritionApp_Android.ViewModels
             {
                 R = await MyUser.ChangePlan(pId, pIdPlan);
  
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public async Task<bool> ChangeRoutine(int pId, int pIdRoutine)
+        {
+            bool R = false;
+            if (IsBusy)
+            {
+                return false;
+            }
+            else
+            {
+                IsBusy = true;
+            }
+
+            try
+            {
+                R = await MyUser.ChangeRoutine(pId, pIdRoutine);
+
                 return R;
 
             }
