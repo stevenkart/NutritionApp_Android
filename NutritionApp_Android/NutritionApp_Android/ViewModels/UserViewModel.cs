@@ -71,6 +71,7 @@ namespace NutritionApp_Android.ViewModels
         }
 
 
+
         public async Task<bool> UserAccessValidation(string pEmail, string pPassword)
         {
             if (IsBusy)
@@ -142,8 +143,8 @@ namespace NutritionApp_Android.ViewModels
                 MyUser.FatPercent = pFat;
                 MyUser.Genre = pGenres;
                 MyUser.IdState = pStates;
-                //MyUser.IdPlan = pPlans;
-                //MyUser.IdRoutine = pRoutines;
+                MyUser.IdPlan = 1004;
+                MyUser.IdRoutine = 1004;
 
 
                 bool R = await MyUser.AddUser();

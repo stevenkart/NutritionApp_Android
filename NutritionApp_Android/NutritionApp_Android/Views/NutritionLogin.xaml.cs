@@ -40,30 +40,34 @@ namespace NutritionApp_Android.Views
                 )
             {
                 //si hay datos en el usuario y contrasennia se puede continuar 
-                try
+                if (!Validaciones.IsValidEmail(TxtEmail.Text.Trim()))
                 {
-                    UserDialogs.Instance.ShowLoading("Cheking User Access data...");
-
-                    await Task.Delay(2000);
-
-
-                    string email = TxtEmail.Text.Trim();
-                    string password = TxtPassword.Text.Trim();
-
-                    R = await viewModel.UserAccessValidation(email, password);
-
-
+                    await DisplayAlert("Email Alert", "Email has not a well format, please check it, it needs @ and correct domain", "OK");
                 }
-                catch (Exception)
+                else
                 {
+                    try
+                    {
+                        UserDialogs.Instance.ShowLoading("Cheking User Access data...");
 
-                    throw;
-                }
-                finally
-                {
-                    UserDialogs.Instance.HideLoading();
+                        await Task.Delay(2000);
 
-                }
+                        string email = TxtEmail.Text.Trim();
+                        string password = TxtPassword.Text.Trim();
+
+                        R = await viewModel.UserAccessValidation(email, password);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                    finally
+                    {
+                        UserDialogs.Instance.HideLoading();
+
+                    }
+                }               
             }
             else
             {
@@ -95,9 +99,7 @@ namespace NutritionApp_Android.Views
             {
                 await DisplayAlert("Validation Error", "User Email or Password are incorrect!, Access Denied", "OK");
                 return;
-
             }
-
         }
 
         private async void BtnSingUp_Clicked(object sender, EventArgs e)

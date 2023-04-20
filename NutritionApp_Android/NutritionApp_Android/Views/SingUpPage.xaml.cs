@@ -56,27 +56,39 @@ namespace NutritionApp_Android.Views
 
                             await Task.Delay(2000);
 
-                            bool R = await viewModel.AddUser(
-                            TxtFullName.Text.Trim(),
-                            TxtPhone.Text.Trim(),
-                            TxtEmail.Text.Trim(),
-                            TxtPassword.Text.Trim(),
-                            Convert.ToDecimal(TxtWeight.Text.Trim()),
-                            Convert.ToDecimal(TxtHight.Text.Trim()),
-                            Convert.ToInt32(TxtAge.Text.Trim()),
-                            Convert.ToDecimal(TxtFat.Text.Trim()),
-                            PickerUserGenre.SelectedItem.ToString());
-
-                            if (R)
+                            GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+                            if (GlobalObjects.LocalUser == null)
                             {
+                                bool R = await viewModel.AddUser(
+                                                           TxtFullName.Text.Trim(),
+                                                           TxtPhone.Text.Trim(),
+                                                           TxtEmail.Text.Trim(),
+                                                           TxtPassword.Text.Trim(),
+                                                           Convert.ToDecimal(TxtWeight.Text.Trim()),
+                                                           Convert.ToDecimal(TxtHight.Text.Trim()),
+                                                           Convert.ToInt32(TxtAge.Text.Trim()),
+                                                           Convert.ToDecimal(TxtFat.Text.Trim()),
+                                                           PickerUserGenre.SelectedItem.ToString());
 
-                                await DisplayAlert(":)", "User Added Successfully!", "OK");
-                                await Navigation.PopAsync();
+                                if (R)
+                                {
+
+                                    await DisplayAlert(":)", "User Added Successfully!", "OK");
+                                    GlobalObjects.LocalUser = null;
+                                    await Navigation.PopAsync();
+                                }
+                                else
+                                {
+                                    await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                                    GlobalObjects.LocalUser = null;
+                                }
                             }
                             else
                             {
-                                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                                await DisplayAlert(":(", "The email typed already exists, try to get the credentials to singin or change the email.", "OK");
                             }
+
+                           
                         }
                         catch (Exception)
                         {

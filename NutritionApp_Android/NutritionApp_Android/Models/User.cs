@@ -561,8 +561,7 @@ namespace NutritionApp_Android.Models
             }
         }
 
-
-
+      
 
     }
 }
