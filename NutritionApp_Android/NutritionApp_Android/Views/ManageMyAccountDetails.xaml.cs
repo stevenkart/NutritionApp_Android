@@ -17,12 +17,14 @@ namespace NutritionApp_Android.Views
     {
 
         UserViewModel viewModel { get; set; }
+        UserDTO MyUser { get; set; }
 
         public ManageMyAccountDetails()
         {
             InitializeComponent();
             BindingContext = viewModel = new UserViewModel();
             LoadPage();
+            MyUser = new UserDTO();
         }
 
         public void LoadPage()
@@ -32,36 +34,180 @@ namespace NutritionApp_Android.Views
             TxtFullName.Text = User.Name;
             TxtPhone.Text = User.PhoneNum;
             TxtEmail.Text = User.EmailAddress;
-            TxtWeight.Text = Convert.ToString( User.W );
-            TxtHeight.Text = Convert.ToString( User.H );
-            TxtAge.Text = Convert.ToString( User.Ages );
-            TxtFat.Text = Convert.ToString( User.Fat );
+            TxtWeight.Text = Convert.ToString(Convert.ToDouble(User.W));
+            TxtHeight.Text = Convert.ToString(Convert.ToDouble(User.H));
+            TxtAge.Text = Convert.ToString(Convert.ToDouble(User.Ages));
+            TxtFat.Text = Convert.ToString(Convert.ToDouble(User.Fat));
         }
 
         private async void BtnUpdate_Clicked(object sender, EventArgs e)
         {
-            bool R = await viewModel.UpdateUser(
-                TxtFullName.Text.Trim(),
-                TxtPhone.Text.Trim(),
-                TxtEmail.Text.Trim(),
-                Convert.ToDecimal(TxtWeight.Text.Trim()),
-                Convert.ToDecimal(TxtHeight.Text.Trim()),
-                Convert.ToInt32(TxtAge.Text.Trim()),
-                Convert.ToDecimal(TxtFat.Text.Trim())
-                );
-
-            if (R)
+            if (
+               TxtFullName.Text != null && !string.IsNullOrEmpty(TxtFullName.Text.Trim()) &&
+               TxtPhone.Text != null && !string.IsNullOrEmpty(TxtPhone.Text.Trim()) &&
+               TxtEmail.Text != null && !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
+               TxtWeight.Text != null && !string.IsNullOrEmpty(TxtWeight.Text.Trim()) &&
+               TxtHeight.Text != null && !string.IsNullOrEmpty(TxtHeight.Text.Trim()) &&
+               TxtAge.Text != null && !string.IsNullOrEmpty(TxtAge.Text.Trim()) &&
+               TxtFat.Text != null && !string.IsNullOrEmpty(TxtFat.Text.Trim()) 
+               )
             {
 
-                GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+                if (!Validaciones.IsValidEmail(TxtEmail.Text.Trim()))
+                {
+                    await DisplayAlert("Email Alert", "Email has not a well format, please check it, it needs @ and correct domain", "OK");
+                }
+                else
+                {
+                    MyUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+                    if (MyUser == null)
+                    {
+                        try
+                        {
+                            UserDialogs.Instance.ShowLoading("Adding the user...");
 
-                await DisplayAlert(":)", "User Updated Successfully!", "OK");
+                            await Task.Delay(2000);
 
-                await Navigation.PushAsync(new MainMenuPage());
+                            bool R = await viewModel.UpdateUser(
+                               TxtFullName.Text.Trim(),
+                               TxtPhone.Text.Trim(),
+                               TxtEmail.Text.Trim(),
+                               Convert.ToDecimal(TxtWeight.Text),
+                               Convert.ToDecimal(TxtHeight.Text),
+                               Convert.ToInt32(TxtAge.Text),
+                               Convert.ToDecimal(TxtFat.Text)
+                               );
+
+                            if (R)
+                            {
+
+                                GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+
+                                await DisplayAlert(":)", "User Updated Successfully!", "OK");
+                                MyUser = null;
+                                await Navigation.PushAsync(new MainMenuPage());
+                            }
+                            else
+                            {
+                                MyUser = null;
+                                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                        finally
+                        {
+                            UserDialogs.Instance.HideLoading();
+                        }
+                    }
+                    else
+                    {
+                        if ((MyUser.EmailAddress == GlobalObjects.LocalUser.EmailAddress) && (MyUser.Id == GlobalObjects.LocalUser.Id))
+                        {
+                            try
+                            {
+                                UserDialogs.Instance.ShowLoading("Adding the user...");
+
+                                await Task.Delay(2000);
+
+
+                                bool R = await viewModel.UpdateUser(
+                                   TxtFullName.Text.Trim(),
+                                   TxtPhone.Text.Trim(),
+                                   TxtEmail.Text.Trim(),
+                                   Convert.ToDecimal(TxtWeight.Text),
+                                   Convert.ToDecimal(TxtHeight.Text),
+                                   Convert.ToInt32(TxtAge.Text),
+                                   Convert.ToDecimal(TxtFat.Text)
+                                   );
+
+                                if (R)
+                                {
+
+                                    GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
+
+                                    await DisplayAlert(":)", "User Updated Successfully!", "OK");
+                                    MyUser = null;
+                                    await Navigation.PushAsync(new MainMenuPage());
+                                }
+                                else
+                                {
+                                    MyUser = null;
+                                    await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                                }
+
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
+                            finally
+                            {
+                                UserDialogs.Instance.HideLoading();
+                            }
+                        }
+                        else
+                        {
+                            if ((MyUser.EmailAddress != GlobalObjects.LocalUser.EmailAddress) && (MyUser.Id != GlobalObjects.LocalUser.Id))
+                            {
+                                MyUser = null;
+                                await DisplayAlert(":(", "The email typed already exists, you cannot change the email, try another one.", "OK");
+                            }
+                        }
+                    }
+                }
             }
             else
             {
-                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                //estas validaciones deben ser puntuales para informar al usuario que falla 
+
+                if (TxtFullName.Text == null || string.IsNullOrEmpty(TxtFullName.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Name is required!", "OK");
+                    TxtFullName.Focus();
+                    return;
+                }
+                if (TxtPhone.Text == null || string.IsNullOrEmpty(TxtPhone.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Phone is required!", "OK");
+                    TxtPhone.Focus();
+                    return;
+                }
+                if (TxtEmail.Text == null || string.IsNullOrEmpty(TxtEmail.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Email is required!", "OK");
+                    TxtEmail.Focus();
+                    return;
+                }
+                if (TxtWeight.Text == null || string.IsNullOrEmpty(TxtWeight.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Weight is required!", "OK");
+                    TxtWeight.Focus();
+                    return;
+                }
+                if (TxtHeight.Text == null || string.IsNullOrEmpty(TxtHeight.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Hight is required!", "OK");
+                    TxtHeight.Focus();
+                    return;
+                }
+                if (TxtAge.Text == null || string.IsNullOrEmpty(TxtAge.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Age is required!", "OK");
+                    TxtAge.Focus();
+                    return;
+                }
+                if (TxtFat.Text == null || string.IsNullOrEmpty(TxtFat.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Fat is required!", "OK");
+                    TxtFat.Focus();
+                    return;
+                }  
             }
         }
 

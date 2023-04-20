@@ -125,7 +125,6 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
-
         public async Task<List<ExerciseRoutine>> GetCollectionRoutineData(int id)
         {
             try
@@ -150,9 +149,6 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
-
-
-
         public async Task<bool> UpdateExerciseName(int id, ExerciseRoutine exerciseRoutine)
         {
 
