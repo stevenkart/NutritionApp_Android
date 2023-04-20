@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NutritionApp_Android.Views.UserAddEditExercisePage">
+             x:Class="NutritionApp_Android.Views.ExerciseRoutinePage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ColorSecondaryButton">#EA4113</Color>
@@ -12,10 +15,8 @@
     <ContentPage.Content>
         <ScrollView>
             <FlexLayout Direction="Column"  Padding="14,15,14,10">
-                <StackLayout>
-                    <Label x:Name="lblTitle" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
-                       HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold"/>
-                </StackLayout>
+                <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" 
+                       HorizontalTextAlignment="Center" FontSize="18" Text="My Exercises Routine" FontAttributes="Bold"/>
 
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" >
                     <StackLayout Margin="0,25,0,-45" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
@@ -32,19 +33,17 @@
 
                             <Button x:Name="BtnBack" Text="Exit" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="0" Grid.Row="0" Clicked="BtnBack_Clicked"/>
-                            <Button x:Name="BtnChange"  Text="Add"  BackgroundColor="Green" FontSize="12" TextColor="White" FontAttributes="Bold" 
-                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="1" Grid.Row="0" Clicked="BtnChange_Clicked"/>
-                            <Button x:Name="BtnDelete"  Text="Delete"  BackgroundColor="Red" FontSize="12" TextColor="White" FontAttributes="Bold" 
-                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="2" Grid.Row="0" Clicked="BtnDelete_Clicked"/>
+                            <Button x:Name="BtnAdd"  Text="Add"  BackgroundColor="Green" FontSize="12" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15"  MinimumWidthRequest="150" Grid.Column="1" Grid.Row="0" Clicked="BtnAdd_Clicked"/>
                         </Grid>
                     </StackLayout>
                     <Label Text="Showing..." Margin="0,5,0,10" HorizontalOptions="Start"></Label>
                 </StackLayout>
 
                 <StackLayout>
-                    <Label x:Name="lblNotPlan" Text="There is not plan to select" IsVisible="false"/>
+                    <Label x:Name="lblNotRoutine" Text="There is not a routine selected" />
                 </StackLayout>
-                <CollectionView x:Name="collectionViewRoutines" SelectionMode="Single" Margin="5" HeightRequest="400" SelectionChanged="collectionViewRoutines_SelectionChanged">
+                <CollectionView x:Name="collectionViewRoutine" SelectionMode="Single" Margin="5" HeightRequest="400" SelectionChanged="collectionViewRoutine_SelectionChanged">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="5,5,0,-10" Margin="10" >

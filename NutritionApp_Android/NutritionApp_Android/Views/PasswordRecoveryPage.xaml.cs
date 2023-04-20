@@ -40,7 +40,7 @@ namespace NutritionApp_Android.Views
                 {
                     if (!Validaciones.IsValidEmail(TxtEmail.Text.Trim()))
                     {
-                        await DisplayAlert("Email Alert", "Email has not a well format, please check it", "OK");
+                        await DisplayAlert("Email Alert", "Email has not a well format, please check it, It needs a @ and a correct domain", "OK");
 
                     }
                     else
@@ -91,7 +91,6 @@ namespace NutritionApp_Android.Views
 
             }
         }
-
         private async void BtnCkRecoveryCode_Clicked(object sender, EventArgs e)
         {
             //Check Recovery Code
@@ -144,6 +143,7 @@ namespace NutritionApp_Android.Views
                 TxtRecoveryCode.IsEnabled = false;
                 BtnCkRecoveryCode.IsEnabled = false;
                 await DisplayAlert("Validation Successfull", "Please Change the password!", "OK");
+                BtnSendRecoveryCode.IsEnabled = false;
                 return;
             }
             else
@@ -154,7 +154,6 @@ namespace NutritionApp_Android.Views
             }
 
         }
-
         private async void BtnConfirmPassword_Clicked(object sender, EventArgs e)
         {
             //Change Password
@@ -207,7 +206,6 @@ namespace NutritionApp_Android.Views
             }
 
         }
-
         private async void BtnCancel_Clicked(object sender, EventArgs e)
         {
             GlobalObjects.LocalUser = null;

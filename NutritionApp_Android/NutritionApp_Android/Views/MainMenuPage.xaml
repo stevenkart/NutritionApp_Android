@@ -77,7 +77,8 @@
                          HeightRequest="100"
                          WidthRequest="100"
                          FontSize="14"
-                         CornerRadius="20"/>
+                         CornerRadius="20"
+                         Clicked="BtnExercise_Clicked"/>
                     </Grid>
                 </FlexLayout>
 

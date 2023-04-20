@@ -67,7 +67,7 @@ namespace NutritionApp_Android.Views
 
         private async void BtnCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainMenuPage());
+            await Navigation.PopAsync();
         }
 
         private async void BtnChangePassword_Clicked(object sender, EventArgs e)

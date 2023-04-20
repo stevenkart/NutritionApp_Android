@@ -15,7 +15,7 @@
         <ScrollView>
             <StackLayout Padding="14,15,14,10">
 
-                <Entry x:Name="TxtFullName" Placeholder="Full Name" Keyboard="Default" FontSize="14" >
+                <Entry x:Name="TxtFullName" Placeholder="Full Name" Keyboard="Default" FontSize="14">
                     <Entry.Triggers>
                         <Trigger TargetType="Entry" Property="IsFocused" Value="True">
                             <Setter Property="BackgroundColor" Value="Black"/>
