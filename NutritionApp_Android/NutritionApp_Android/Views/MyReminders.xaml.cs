@@ -32,7 +32,7 @@ namespace NutritionApp_Android.Views
 
             string Detail = GlobalObjects.LocalReminder.Detail;
 
-            if (IdReminder > 0 && !string.IsNullOrWhiteSpace( Detail )) 
+            if ( IdReminder > 0 && !string.IsNullOrWhiteSpace( Detail ) ) 
             {
                 BtnDelete.IsEnabled = true; ;
 

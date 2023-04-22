@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using NutritionApp_Android.Models;
@@ -415,6 +416,59 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+
+        public async Task<List<User>> GetUsersList(int pUserStatus)
+        {
+
+            //TODO: usar o no un param para el id del usuario
+
+            if (IsBusy) return null;
+
+            IsBusy = true;
+
+            try
+            {
+                List<User> list = new List<User>();
+
+                MyUser.IdState = pUserStatus;
+
+                list = await MyUser.GetUsersList();
+
+                return list == null ? null : list;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

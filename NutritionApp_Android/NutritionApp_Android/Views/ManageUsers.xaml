@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Manage Users"
+             x:Class="NutritionApp_Android.Views.ManageUsers">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorSecondaryButton">#EA4113</Color>
+            <Color x:Key="ColorRootButtons">#30DC62</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <FlexLayout Direction="Column" VerticalOptions="Center" Padding="20,30,20,0">
+                    <Label Text="Users List" Padding="20,0,0,0" FontSize="20" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <StackLayout Padding="0,15,0,15">
+
+                        <Button x:Name="BtnUpdateUser" Text="Update User" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold"
+                            CornerRadius="15" Clicked="BtnUpdateUser_Clicked" />
+                        <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
+                            CornerRadius="15" Clicked="BtnCancel_Clicked" />
+                        <Label x:Name="LblUsersStatus" Text="Active Users" HorizontalTextAlignment="End" TextColor="Fuchsia"/>
+                        <Switch x:Name="SwShowInactiveUsers" IsToggled="True" Toggled="SwShowInactiveUsers_Toggled" />
+                    </StackLayout>
+                    <CollectionView x:Name="UsersListView" SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10"
+                                  RowDefinitions="Auto, *"
+                                  ColumnDefinitions="Auto, *">
+                                    <Label Grid.RowSpan="1"
+                                       Text="{Binding IdUser}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20" />
+                                    <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{Binding FullName}"
+                                       VerticalOptions="End"
+                                       FontSize="20"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+
+
+</ContentPage>

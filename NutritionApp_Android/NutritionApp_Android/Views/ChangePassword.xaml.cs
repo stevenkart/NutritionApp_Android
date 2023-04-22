@@ -25,30 +25,23 @@ namespace NutritionApp_Android.Views
 
         private async void BtnUpdatePassword_Clicked(object sender, EventArgs e)
         {
-
-            
             bool R = false;
 
-            if (
-                !string.IsNullOrEmpty(TxtCurrentPassword.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtNewPassword.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtConfirmNewPassword.Text.Trim())
-                )
+            string error = ValidateData();
+
+            if ( string.IsNullOrEmpty( error ) )
             {
-                //si hay datos en el usuario y contrasennia se puede continuar 
                 try
                 {
                     UserDialogs.Instance.ShowLoading("Cheking User's Password...");
 
                     await Task.Delay(2000);
 
-
                     string CurrentPassword = TxtCurrentPassword.Text.Trim();
                     string Email = GlobalObjects.LocalUser.EmailAddress.Trim();
 
+                    // method -> validate email and password
                     R = await viewModel.UserAccessValidation(Email, CurrentPassword);
-
-
                 }
                 catch (Exception)
                 {
@@ -63,42 +56,27 @@ namespace NutritionApp_Android.Views
             }
             else
             {
-                await DisplayAlert("Validation Error", "You must fill the blank fields!", "OK");
+                await DisplayAlert("Validation Error", string.Format("{0}", error), "OK");
                 return;
-
             }
-
+            
 
             if (R)
             {
-
                 string NewPassword = TxtNewPassword.Text.Trim();
-                string ConfirmNewPassword = TxtConfirmNewPassword.Text.Trim();
 
-                if ( NewPassword.Equals( ConfirmNewPassword ) )
+                // method -> update password
+                R = await viewModel.UpdatePassword(NewPassword);
+
+                if (R)
                 {
+                    await DisplayAlert(":)", "Password Updated Successfully!", "OK");
 
-                    R = await viewModel.UpdatePassword( NewPassword );
-
-                    if (R)
-                    {
-
-                        await DisplayAlert(":)", "Password Updated Successfully!", "OK");
-
-                        await Navigation.PushAsync(new ManageMyAccountDetails());
-                    }
-                    else
-                    {
-                        await DisplayAlert(":(", "Somenthing went wrong!", "OK");
-                    }
-
+                    await Navigation.PopAsync();
                 }
                 else
                 {
-
-                    await DisplayAlert("Validation Error", "Confirmation Password Incorrect!", "OK");
-                    return;
-
+                    await DisplayAlert(":(", "Somenthing went wrong!", "OK");
                 }
 
             }
@@ -110,11 +88,46 @@ namespace NutritionApp_Android.Views
 
         }
 
-        private async void BtnCancel_Clicked(object sender, EventArgs e)
+        // method -> data can't be empty
+        private string ValidateData()
         {
-            await Navigation.PushAsync(new ManageMyAccountDetails());
+            StringBuilder sb = new StringBuilder();
+
+            if ( string.IsNullOrEmpty( TxtCurrentPassword.Text.Trim() ) )
+            {
+                sb.Append( "Current Password can't be empty \n" );
+            }
+
+            if ( string.IsNullOrEmpty( TxtNewPassword.Text.Trim() ) )
+            {
+                sb.Append( "New Password can't be empty \n" );
+            }
+
+            if ( string.IsNullOrEmpty( TxtConfirmNewPassword.Text.Trim() ) )
+            {
+                sb.Append( "Confirmation Password can't be empty \n" );
+            }
+            
+            if ( TxtNewPassword.Text.Length < 8 || TxtNewPassword.Text.Length > 16 )
+            {
+                sb.Append( "New Password must be between 8 & 16 digits \n" );
+            }
+
+            if ( !TxtNewPassword.Text.Equals( TxtConfirmNewPassword.Text ) )
+            {
+                sb.Append( "Confirmation Password Incorrect \n" );
+            }
+
+            return sb.ToString();
         }
 
+        // button -> exit
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
+        // switch -> show the password text
         private void SwShowPassword_Toggled(object sender, ToggledEventArgs e)
         {
             if (SwShowPassword.IsToggled)
@@ -130,5 +143,9 @@ namespace NutritionApp_Android.Views
                 TxtConfirmNewPassword.IsPassword = true;
             }
         }
+
+
+
+
     }
 }
