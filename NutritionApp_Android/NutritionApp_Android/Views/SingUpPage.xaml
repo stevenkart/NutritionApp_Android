@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionApp_Android.Views.SingUpPage"
-             Title="Sing Up Page">
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True"
+             Title="SingUp Page">
 
     <ContentPage.Resources>
         <ResourceDictionary>

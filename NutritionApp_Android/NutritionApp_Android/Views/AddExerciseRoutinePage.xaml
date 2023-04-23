@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NutritionApp_Android.Views.AddExerciseRoutinePage">
+             x:Class="NutritionApp_Android.Views.AddExerciseRoutinePage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True"
+             Title="Add New Exercises">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ColorSecondaryButton">#40E0D0</Color>
@@ -13,35 +17,34 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20,10,20,20">
-
                 <FlexLayout Direction="Column">
-                    <Entry x:Name="TxtName" Placeholder="Name" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
-                        <Entry.Triggers>
-                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                                <Setter Property="TextColor" Value="White" />
-                                <Setter Property="FontAttributes" Value="Bold" />
-                            </Trigger>
-                        </Entry.Triggers>
-                    </Entry>
-                    <Entry x:Name="TxtDescription" Placeholder="Description" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
-                        <Entry.Triggers>
-                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                                <Setter Property="TextColor" Value="White" />
-                                <Setter Property="FontAttributes" Value="Bold" />
-                            </Trigger>
-                        </Entry.Triggers>
-                    </Entry>
-                    <Entry x:Name="TxtExerciseXample" Placeholder="Example" Keyboard="Default" FontSize="12" HorizontalTextAlignment="Center">
-                        <Entry.Triggers>
-                            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                                <Setter Property="TextColor" Value="White" />
-                                <Setter Property="FontAttributes" Value="Bold" />
-                            </Trigger>
-                        </Entry.Triggers>
-                    </Entry>
+                    <StackLayout Padding="0,20,0,20">
+                        <Entry x:Name="TxtName" Placeholder="Name" Keyboard="Default" FontSize="16" HorizontalTextAlignment="Center">
+                            <Entry.Triggers>
+                                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </Trigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Entry x:Name="TxtDescription" Placeholder="Description" Keyboard="Default" FontSize="16" HorizontalTextAlignment="Center">
+                            <Entry.Triggers>
+                                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </Trigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Entry x:Name="TxtExerciseXample" Placeholder="Example like a image" Keyboard="Default" FontSize="16" HorizontalTextAlignment="Center">
+                            <Entry.Triggers>
+                                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </Trigger>
+                            </Entry.Triggers>
+                        </Entry>
+                    </StackLayout>
                 </FlexLayout>
-
-
                 <StackLayout Padding="20,10,20,20">
                     <Button x:Name="BtnAdd" Text="Add New" BackgroundColor="{StaticResource ColorSuccessButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15" Clicked="BtnAdd_Clicked"/>

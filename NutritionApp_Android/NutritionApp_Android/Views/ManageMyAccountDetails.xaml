@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionApp_Android.Views.ManageMyAccountDetails"
              Shell.NavBarIsVisible="False"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             Title="Manage Account">
 
     <ContentPage.Resources>
         <ResourceDictionary>

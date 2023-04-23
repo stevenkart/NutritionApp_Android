@@ -48,7 +48,7 @@ namespace NutritionApp_Android.Views
                 {
                     try
                     {
-                        UserDialogs.Instance.ShowLoading("Cheking User Access data...");
+                        UserDialogs.Instance.ShowLoading("Checking User Access data...");
 
                         await Task.Delay(2000);
 
@@ -120,6 +120,15 @@ namespace NutritionApp_Android.Views
             else
             {
                 TxtPassword.IsPassword = true;
+            }
+        }
+
+        private async void BtnCloseApp_Clicked(object sender, EventArgs e)
+        {
+            var action = await DisplayAlert("Closing...", "Are you sure to close the app?", "Continue...", "Cancel");
+            if (action)
+            {
+                Environment.Exit(0);
             }
         }
     }
