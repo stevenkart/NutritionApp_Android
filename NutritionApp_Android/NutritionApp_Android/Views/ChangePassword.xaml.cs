@@ -72,7 +72,8 @@ namespace NutritionApp_Android.Views
                 {
                     await DisplayAlert(":)", "Password Updated Successfully!", "OK");
 
-                    await Navigation.PopAsync();
+                        await Navigation.PopAsync();
+                    
                 }
                 else
                 {

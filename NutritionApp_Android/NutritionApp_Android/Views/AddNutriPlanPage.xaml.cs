@@ -1,4 +1,5 @@
-﻿using NutritionApp_Android.ViewModels;
+﻿using Acr.UserDialogs;
+using NutritionApp_Android.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,24 +29,65 @@ namespace NutritionApp_Android.Views
 
         private async void BtnAdd_Clicked(object sender, EventArgs e)
         {
-            
-
-            bool R = await viewModel.AddPlan(
-                TxtName.Text.Trim(),
-                TxtDescription.Text.Trim(),
-                TxtPlanXample.Text.Trim());
-
-            if (R)
+            if (
+               TxtName.Text != null && !string.IsNullOrEmpty(TxtName.Text.Trim()) &&
+               TxtDescription.Text != null && !string.IsNullOrEmpty(TxtDescription.Text.Trim()) &&
+               TxtPlanXample.Text != null && !string.IsNullOrEmpty(TxtPlanXample.Text.Trim())
+               )
             {
+                try
+                {
+                    UserDialogs.Instance.ShowLoading("Adding Nutritional Plan...");
 
-                await DisplayAlert(":)", "Nutritional Plan Added Successfully!", "OK");
-                await Navigation.PopAsync();
+                    await Task.Delay(2000);
+
+                    bool R = await viewModel.AddPlan(
+                    TxtName.Text.Trim(),
+                    TxtDescription.Text.Trim(),
+                    TxtPlanXample.Text.Trim());
+
+                    if (R)
+                    {
+
+                        await DisplayAlert(":)", "Nutritional Plan Added Successfully!", "OK");
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert(":(", "Somenthing went wrong!", "OK");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    UserDialogs.Instance.HideLoading();
+                }
             }
             else
             {
-                await DisplayAlert(":(", "Somenthing went wrong!", "OK");
-            }
-
+                if (TxtName.Text == null || string.IsNullOrEmpty(TxtName.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Name is required!", "OK");
+                    TxtName.Focus();
+                    return;
+                }
+                if (TxtDescription.Text == null || string.IsNullOrEmpty(TxtDescription.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Description is required!", "OK");
+                    TxtDescription.Focus();
+                    return;
+                }
+                if (TxtPlanXample.Text == null || string.IsNullOrEmpty(TxtPlanXample.Text.Trim()))
+                {
+                    await DisplayAlert(":(", "Example to show image is required!", "OK");
+                    TxtPlanXample.Focus();
+                    return;
+                }
+            }     
         }
     }
 }

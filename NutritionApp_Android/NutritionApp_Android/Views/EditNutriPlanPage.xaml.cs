@@ -45,7 +45,8 @@ namespace NutritionApp_Android.Views
                 TxtId.IsEnabled = false;
                 LblError.IsVisible = false;
                 state = MyLocalNutritionalPlan.IdState == 1 ? "Activate" : "Inactive";
-    }
+                ImagePreview.Source = Convert.ToString(MyLocalNutritionalPlan.PlanXample);
+            }
             else
             {
                 TxtId.IsVisible = false;

@@ -16,6 +16,24 @@ namespace NutritionApp_Android.Views
 		{
 			InitializeComponent ();
             UserName.Text = GlobalObjects.LocalUser.Name;
+            if (GlobalObjects.LocalUser.IdStates == 4)
+            {
+                BtnAllUserEdit.IsEnabled = true;
+                BtnAllUserEdit.IsVisible = true;
+                BtnAllNutritionalsEdit.IsEnabled = true;
+                BtnAllNutritionalsEdit.IsVisible = true;
+                BtnAllExerciseEdit.IsEnabled = true;
+                BtnAllExerciseEdit.IsVisible = true;
+            }
+            else
+            {
+                BtnAllUserEdit.IsEnabled = false;
+                BtnAllUserEdit.IsVisible = false;
+                BtnAllNutritionalsEdit.IsEnabled = false;
+                BtnAllNutritionalsEdit.IsVisible = false;
+                BtnAllExerciseEdit.IsEnabled = false;
+                BtnAllExerciseEdit.IsVisible = false;
+            }
 		}
 
         private async void BtnExit_Clicked(object sender, EventArgs e)
@@ -53,5 +71,11 @@ namespace NutritionApp_Android.Views
         {
             await Navigation.PushAsync(new NutritionalPlansPage());
         }
+
+        private async void BtnExercise_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ExerciseRoutinePage());
+        }
+
     }
 }

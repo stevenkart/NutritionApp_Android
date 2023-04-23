@@ -125,6 +125,30 @@ namespace NutritionApp_Android.ViewModels
                 throw;
             }
         }
+        public async Task<List<ExerciseRoutine>> GetCollectionRoutineData(int id)
+        {
+            try
+            {
+                List<ExerciseRoutine> exercises = new List<ExerciseRoutine>();
+
+                exercises = await MyExerciseRoutine.GetRoutinesFilterId(id);
+
+                if (exercises == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return exercises;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public async Task<bool> UpdateExerciseName(int id, ExerciseRoutine exerciseRoutine)
         {
 

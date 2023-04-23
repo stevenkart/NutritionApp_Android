@@ -56,9 +56,23 @@ namespace NutritionApp_Android.Models
                 {
                     var list = JsonConvert.DeserializeObject<List<UserDTO>>(response.Content);
 
-                    var item = list[0];
+                    int iterador = 0;
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        iterador = i + 1;
 
-                    return item;
+                    }
+
+                    if (iterador > 0)
+                    {
+                        var item = list[0];
+                        return item;
+                    }
+                    else
+                    {
+                        UserDTO item = null;
+                        return item;
+                    }
                 }
                 else
                 {
@@ -68,14 +82,12 @@ namespace NutritionApp_Android.Models
             catch (Exception ex)
             {
                 string ErrorMsg = ex.Message;
-
                 throw;
             }
-
-
-
-
-
         }
+
+   
+
+
     }
 }

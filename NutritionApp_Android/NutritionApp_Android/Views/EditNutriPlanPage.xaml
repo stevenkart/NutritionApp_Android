@@ -10,8 +10,8 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="14,15,14,10">
-            <FlexLayout Direction="Column">
+        <ScrollView Padding="14,15,14,10">
+            <FlexLayout Direction="Column"  AlignItems="Center">
                 <Label
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand"
@@ -40,11 +40,14 @@
                     <Button x:Name="BtnEditDescription"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
                         CornerRadius="15"  Grid.Column="1" Grid.Row="1"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditDescription_Clicked"/>
 
-                    <Entry x:Name="TxtPlan" Grid.Column="0"  Grid.Row="2"></Entry>
+                    <Label Text="Example:" Grid.Column="0"  Grid.Row="2" ></Label>
+                    <Image x:Name="ImagePreview"  Grid.Column="0" Grid.Row="2" Source="" HeightRequest="100" HorizontalOptions="End" WidthRequest="100" Aspect="AspectFit" />
+                    
+                    <Entry x:Name="TxtPlan" Grid.Column="0"  Grid.Row="3"></Entry>
                     <Button x:Name="BtnEditPlan"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
-                        CornerRadius="15"  Grid.Column="1" Grid.Row="2"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditPlan_Clicked"/>
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="3"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditPlan_Clicked"/>
 
-                    <Picker x:Name="PickerState" Title="Select a State" FontSize="14" Grid.Column="0"  Grid.Row="3" >
+                    <Picker x:Name="PickerState" Title="Select a State" FontSize="14" Grid.Column="0"  Grid.Row="4" >
                         <Picker.Triggers>
                             <Trigger TargetType="Picker" Property="IsFocused" Value="True">
                                 <Setter Property="TextColor" Value="White" />
@@ -57,7 +60,7 @@
                         </Picker.Items>
                     </Picker>
                     <Button x:Name="BtnEditState"  Text="Update"  BackgroundColor="YellowGreen" FontSize="9" TextColor="White" FontAttributes="Bold" 
-                        CornerRadius="15"  Grid.Column="1" Grid.Row="3"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditState_Clicked"/>
+                        CornerRadius="15"  Grid.Column="1" Grid.Row="4"  VerticalOptions="End" MinimumWidthRequest="150" Clicked="BtnEditState_Clicked"/>
 
                 </Grid>
                 <Label x:Name="LblError" Text="Something went wrong getting the Nutritional Plans Data."></Label>
@@ -69,6 +72,6 @@
                     </StackLayout>
                 </StackLayout>
             </FlexLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

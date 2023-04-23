@@ -14,29 +14,32 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid>
-            <ContentView Padding="0,50,0,10" VerticalOptions="StartAndExpand">
+        <ScrollView>
+            <StackLayout Padding="14,15,14,10">
+                <FlexLayout Direction="Column">
+                    <StackLayout Padding="0,50,0,10" VerticalOptions="StartAndExpand">
+                        <Label x:Name="labelLogin" Text="Login Page" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="20" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                    <Grid>
+                        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                            <StackLayout Padding="10,0,10,30" VerticalOptions="Center">
+                                <Entry x:Name="TxtEmail" Placeholder="Email" FontSize="20"  Keyboard="Email"/>
+                                <Entry x:Name="TxtPassword" Placeholder="Password" FontSize="20"  Keyboard="Default" IsPassword="True" />
+                                <Switch x:Name="SwShowPassword" IsToggled="False" Toggled="SwShowPassword_Toggled" />
+                            </StackLayout>
 
-                <Label x:Name="labelLogin" Text="Login Page" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" TextColor="White"></Label>
+                            <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Login" Clicked="BtnLogin_Clicked"/>
+                            <Button x:Name="BtnSingUp" VerticalOptions="Center" Text="Sing Up" BackgroundColor="{StaticResource ColorSecondaryButton}" Clicked="BtnSingUp_Clicked"/>
 
-            </ContentView>
-            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-                <StackLayout Padding="10,0,10,30" VerticalOptions="Center">
-                    <Entry x:Name="TxtEmail" Placeholder="Email" FontSize="20"  Keyboard="Email"/>
-                    <Entry x:Name="TxtPassword" Placeholder="Password" FontSize="20"  Keyboard="Default" IsPassword="True" />
-                    <Switch x:Name="SwShowPassword" IsToggled="False" Toggled="SwShowPassword_Toggled" />
-                </StackLayout>
-
-                <Button x:Name="BtnLogin" VerticalOptions="Center" Text="Login" Clicked="BtnLogin_Clicked"/>
-                <Button x:Name="BtnSingUp" VerticalOptions="Center" Text="Sing Up" BackgroundColor="{StaticResource ColorSecondaryButton}" Clicked="BtnSingUp_Clicked"/>
-
-                <Label x:Name="LblPasswordRecovery" Text="Password Recovery..." >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                            <Label x:Name="LblPasswordRecovery" Text="Password Recovery..." >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </FlexLayout>
             </StackLayout>
-
-        </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

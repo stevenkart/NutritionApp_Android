@@ -346,6 +346,42 @@ namespace NutritionApp_Android.Models
             }
         }
 
+        public async Task<List<ExerciseRoutine>> GetRoutinesFilterId(int id)
+        {
+            try
+            {
+                string RouteSufix = string.Format("ExerciseRoutines/GetRoutinesFilterId?pID={0}", id);
+
+                string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Get);
+
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                HttpStatusCode statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    var list = JsonConvert.DeserializeObject<List<ExerciseRoutine>>(response.Content);
+
+                    return list;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                string ErrorMsg = ex.Message;
+                throw;
+            }
+        }
 
 
 

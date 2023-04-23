@@ -13,12 +13,14 @@ namespace NutritionApp_Android.Views
     {
 
         UserViewModel viewModel { get; set; }
+        UserDTO MyUser { get; set; }
 
         public ManageMyAccountDetails()
         {
             InitializeComponent();
             BindingContext = viewModel = new UserViewModel();
             LoadPage();
+            MyUser = new UserDTO();
         }
 
         // method -> load data 
@@ -29,10 +31,10 @@ namespace NutritionApp_Android.Views
             TxtFullName.Text = User.Name;
             TxtPhone.Text = User.PhoneNum;
             TxtEmail.Text = User.EmailAddress;
-            TxtWeight.Text = Convert.ToString( User.W );
-            TxtHeight.Text = Convert.ToString( User.H );
-            TxtAge.Text = Convert.ToString( User.Ages );
-            TxtFat.Text = Convert.ToString( User.Fat );
+            TxtWeight.Text = Convert.ToString(Convert.ToDouble(User.W));
+            TxtHeight.Text = Convert.ToString(Convert.ToDouble(User.H));
+            TxtAge.Text = Convert.ToString(Convert.ToDouble(User.Ages));
+            TxtFat.Text = Convert.ToString(Convert.ToDouble(User.Fat));
         }
 
         // button -> modified user personal data
