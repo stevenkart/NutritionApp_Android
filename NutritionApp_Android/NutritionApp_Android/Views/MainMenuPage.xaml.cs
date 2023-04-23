@@ -42,9 +42,9 @@ namespace NutritionApp_Android.Views
             await Navigation.PopAsync(); //pushh async almacena aun la data de pagina visitada / en cambio PopAsync elimina la data y retorna la pagina anterior
         }
 
-        private void BtnAllUserEdit_Clicked(object sender, EventArgs e)
+        private async void BtnAllUserEdit_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ManageUsers());
         }
 
         private async void BtnAllNutritionalsEdit_Clicked(object sender, EventArgs e)

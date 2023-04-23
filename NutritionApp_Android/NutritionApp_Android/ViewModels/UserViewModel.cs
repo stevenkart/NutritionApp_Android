@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using NutritionApp_Android.Models;
@@ -34,14 +35,9 @@ namespace NutritionApp_Android.ViewModels
         public async Task<UserDTO> GetUserData(string pEmail)
         {
 
-            if (IsBusy)
-            {
-                return null;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return null;
+
+            IsBusy = true;
 
             try
             {
@@ -49,14 +45,7 @@ namespace NutritionApp_Android.ViewModels
 
                 user = await MyUserDTO.GetUserData(pEmail);
 
-                if (user == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return user;
-                }
+                return user == null ? null : user;
             }
             catch (Exception)
             {
@@ -229,21 +218,17 @@ namespace NutritionApp_Android.ViewModels
                                         decimal pW,
                                         decimal pH,
                                         int pAges,
-                                        decimal pFat)
+                                        decimal pFat
+                                                    )
         {
 
-            if (IsBusy)
-            {
-                return false;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return false;
+
+            IsBusy = true;
 
             try
             {
-
+                MyUser.IdUser = GlobalObjects.LocalUser.Id;
                 MyUser.FullName = pName;
                 MyUser.Phone = pPhoneNum;
                 MyUser.Email = pEmailAddress;
@@ -255,7 +240,6 @@ namespace NutritionApp_Android.ViewModels
                 bool R = await MyUser.UpdateUser();
 
                 return R;
-
             }
             catch (Exception)
             {
@@ -272,24 +256,18 @@ namespace NutritionApp_Android.ViewModels
 
         public async Task<bool> UpdatePassword( string pPassword )
         {
-            if (IsBusy)
-            {
-                return false;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return false;
+
+            IsBusy = true;
 
             try
             {
-
+                MyUser.IdUser = GlobalObjects.LocalUser.Id;
                 MyUser.Password = pPassword;
 
                 bool R = await MyUser.UpdatePassword();
 
                 return R;
-
             }
             catch (Exception)
             {
@@ -302,6 +280,38 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+        public async Task<bool> UpdateUserState(
+                                                int pUserId,
+                                                int pUserStatus
+                                                               )
+        {
+            if (IsBusy) return false;
+
+            IsBusy = true;
+
+            try
+            {
+                MyUser.IdUser = pUserId;
+                MyUser.IdState = pUserStatus;
+
+                bool R = await MyUser.UpdateUserState();
+
+                return R;
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        
         public async Task<bool> UserRecoveryCodeValidation(string pEmail, int pRecoveryCode)
         {
             if (IsBusy)
@@ -442,6 +452,40 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+
+        public async Task<List<User>> GetUsersList(int pUserStatus)
+        {
+
+            //TODO: usar o no un param para el id del usuario
+
+            if (IsBusy) return null;
+
+            IsBusy = true;
+
+            try
+            {
+                List<User> list = new List<User>();
+
+                MyUser.IdState = pUserStatus;
+
+                list = await MyUser.GetUsersList();
+
+                return list == null ? null : list;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
 
 
 
