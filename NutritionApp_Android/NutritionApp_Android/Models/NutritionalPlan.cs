@@ -352,7 +352,6 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
-
         public async Task<List<NutritionalPlan>> GetNutritionalPlansFilterId(int id)
         {
             try

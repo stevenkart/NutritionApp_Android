@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="NutritionApp_Android.Views.ManageNutritionalPlansPage"
-             Shell.NavBarIsVisible="False"
-             NavigationPage.HasNavigationBar="True">
+              Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="True"
+             Title="Manage Nutritional Plans">
     
     <ContentPage.Resources>
         <ResourceDictionary>
