@@ -12,8 +12,6 @@ namespace NutritionApp_Android.Models
     {
         public RestRequest Request { get; set; }
 
-
-
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string PhoneNum { get; set; } = null!;
@@ -29,7 +27,6 @@ namespace NutritionApp_Android.Models
         public int? IdPlans { get; set; }
         public int? IdRoutines { get; set; }
 
-
         //Funciones
         public async Task<UserDTO> GetUserData(string pEmail)
         {
@@ -37,8 +34,6 @@ namespace NutritionApp_Android.Models
             {
                 //en APIConnection definimos uin prefijo para la ruta de consumo de los end points. Aca tenemos que agregar el resto de la ruta para la funcion que queremos usar
                 //dentro del controller
-
-
                 string RouteSufix = string.Format("Users/GetUserData?pEmail={0}", pEmail);
 
                 //con esto obtenemos la ruta completa de consumo
@@ -73,9 +68,6 @@ namespace NutritionApp_Android.Models
             catch (Exception ex)
             {
                 string ErrorMsg = ex.Message;
-
-                //almacenar registro de errores en una bitacora para analisis posteriores
-                //tambien puede ser enviarlos a un servidor de captura de errores
 
                 throw;
             }

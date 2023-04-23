@@ -132,20 +132,27 @@ namespace NutritionApp_Android.Views
         {
             if (SwShowPassword.IsToggled)
             {
-                TxtCurrentPassword.IsPassword = false;
-                TxtNewPassword.IsPassword = false;
-                TxtConfirmNewPassword.IsPassword = false;
+                ActiveSwitch();
             }
             else
             {
-                TxtCurrentPassword.IsPassword = true;
-                TxtNewPassword.IsPassword = true;
-                TxtConfirmNewPassword.IsPassword = true;
+                InactiveSwitch();
             }
         }
 
+        private void ActiveSwitch()
+        {
+            TxtCurrentPassword.IsPassword = false;
+            TxtNewPassword.IsPassword = false;
+            TxtConfirmNewPassword.IsPassword = false;
+        }
 
-
+        private void InactiveSwitch()
+        {
+            TxtCurrentPassword.IsPassword = true;
+            TxtNewPassword.IsPassword = true;
+            TxtConfirmNewPassword.IsPassword = true;
+        }
 
     }
 }

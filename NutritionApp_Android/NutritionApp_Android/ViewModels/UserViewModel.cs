@@ -35,14 +35,9 @@ namespace NutritionApp_Android.ViewModels
         public async Task<UserDTO> GetUserData(string pEmail)
         {
 
-            if (IsBusy)
-            {
-                return null;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return null;
+
+            IsBusy = true;
 
             try
             {
@@ -50,14 +45,7 @@ namespace NutritionApp_Android.ViewModels
 
                 user = await MyUserDTO.GetUserData(pEmail);
 
-                if (user == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return user;
-                }
+                return user == null ? null : user;
             }
             catch (Exception)
             {
@@ -272,24 +260,17 @@ namespace NutritionApp_Android.ViewModels
 
         public async Task<bool> UpdatePassword( string pPassword )
         {
-            if (IsBusy)
-            {
-                return false;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return false;
+
+            IsBusy = true;
 
             try
             {
-
                 MyUser.Password = pPassword;
 
                 bool R = await MyUser.UpdatePassword();
 
                 return R;
-
             }
             catch (Exception)
             {

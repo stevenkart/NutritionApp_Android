@@ -25,7 +25,6 @@ namespace NutritionApp_Android.ViewModels
 
         }
 
-
         public List<JsonObjectPatch> PatchMethod( Hashtable HT )
         {
             foreach (DictionaryEntry item in HT)

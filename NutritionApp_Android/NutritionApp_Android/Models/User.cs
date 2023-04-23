@@ -50,8 +50,6 @@ namespace NutritionApp_Android.Models
         {
             try
             {
-        
-
                 string RouteSufix = string.Format("Users/ValidateUserLogin?pEmail={0}&pPassword={1}", this.Email, this.Password);
 
                 //con esto obtenemos la ruta completa de consumo
@@ -89,6 +87,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> AddUser()
         {
             try
@@ -112,10 +112,7 @@ namespace NutritionApp_Android.Models
 
                 string SerializedModel = JsonConvert.SerializeObject(this);
 
-
-
                 Request.AddBody(SerializedModel, GlobalObjects.MimeType);
-
 
                 //ejecucion de la llamada al controlador
                 RestResponse response = await client.ExecuteAsync(Request);
@@ -141,6 +138,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> UpdateUser()
         {
             try
@@ -149,24 +148,16 @@ namespace NutritionApp_Android.Models
 
                 string RouteSufix = string.Format("Users/{0}", this.IdUser);
 
-                //con esto obtenemos la ruta completa de consumo
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
 
                 RestClient client = new RestClient(URL);
 
                 Request = new RestRequest(URL, Method.Patch);
 
-                //Agregamos la info de la llave de seguridad (ApiKey)
-
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
                 Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
-
-                //En este caso tenemos que enviar un JSON al API con la data del usuario que se quiere agregar
-
-
                 
                 JsonObjectPatch JSON = new JsonObjectPatch();
-
                 JSON.JsonCollector.Add("FullName", this.FullName);
                 JSON.JsonCollector.Add("Phone", this.Phone);
                 JSON.JsonCollector.Add("Email", this.Email);
@@ -174,17 +165,12 @@ namespace NutritionApp_Android.Models
                 JSON.JsonCollector.Add("Hight", this.Hight);
                 JSON.JsonCollector.Add("Age", this.Age);
                 JSON.JsonCollector.Add("FatPercent", this.FatPercent);
-
                 List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
-
-
 
                 string SerializedModel = JsonConvert.SerializeObject(JSONList);
 
                 Request.AddBody(SerializedModel, GlobalObjects.MimeType);
 
-
-                //ejecucion de la llamada al controlador
                 RestResponse response = await client.ExecuteAsync(Request);
 
                 HttpStatusCode statusCode = response.StatusCode;
@@ -202,12 +188,11 @@ namespace NutritionApp_Android.Models
             {
                 string ErrorMsg = ex.Message;
 
-                //almacenar registro de errores en una bitacora para analisis posteriores
-                //tambien puede ser enviarlos a un servidor de captura de errores
-
                 throw;
             }
         }
+
+
         public async Task<bool> UpdatePassword()
         {
             try
@@ -216,36 +201,24 @@ namespace NutritionApp_Android.Models
 
                 string RouteSufix = string.Format("Users/{0}", this.IdUser);
 
-                //con esto obtenemos la ruta completa de consumo
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
 
                 RestClient client = new RestClient(URL);
 
                 Request = new RestRequest(URL, Method.Patch);
 
-                //Agregamos la info de la llave de seguridad (ApiKey)
 
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
                 Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
 
-                //En este caso tenemos que enviar un JSON al API con la data del usuario que se quiere agregar
-
-
-
                 JsonObjectPatch JSON = new JsonObjectPatch();
-
                 JSON.JsonCollector.Add("Password", this.Password);
-
                 List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
-
-
 
                 string SerializedModel = JsonConvert.SerializeObject(JSONList);
 
                 Request.AddBody(SerializedModel, GlobalObjects.MimeType);
 
-
-                //ejecucion de la llamada al controlador
                 RestResponse response = await client.ExecuteAsync(Request);
 
                 HttpStatusCode statusCode = response.StatusCode;
@@ -263,12 +236,11 @@ namespace NutritionApp_Android.Models
             {
                 string ErrorMsg = ex.Message;
 
-                //almacenar registro de errores en una bitacora para analisis posteriores
-                //tambien puede ser enviarlos a un servidor de captura de errores
-
                 throw;
             }
         }
+
+
         public async Task<bool> ValidateRecoveryCode()
         {
             try
@@ -310,6 +282,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> AddRecoveryCode(int id, int pValue)
         {
             try
@@ -360,6 +334,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> DeleteRecoveryCode(int id)
         {
             try
@@ -410,6 +386,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> ChangePassword(int id, string pValue)
         {
             try
@@ -460,6 +438,8 @@ namespace NutritionApp_Android.Models
                 throw;
             }
         }
+
+
         public async Task<bool> ChangePlan(int id, int pValue)
         {
             try
