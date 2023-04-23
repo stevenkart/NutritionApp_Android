@@ -217,21 +217,17 @@ namespace NutritionApp_Android.ViewModels
                                         decimal pW,
                                         decimal pH,
                                         int pAges,
-                                        decimal pFat)
+                                        decimal pFat
+                                                    )
         {
 
-            if (IsBusy)
-            {
-                return false;
-            }
-            else
-            {
-                IsBusy = true;
-            }
+            if (IsBusy) return false;
+
+            IsBusy = true;
 
             try
             {
-
+                MyUser.IdUser = GlobalObjects.LocalUser.Id;
                 MyUser.FullName = pName;
                 MyUser.Phone = pPhoneNum;
                 MyUser.Email = pEmailAddress;
@@ -243,7 +239,6 @@ namespace NutritionApp_Android.ViewModels
                 bool R = await MyUser.UpdateUser();
 
                 return R;
-
             }
             catch (Exception)
             {
@@ -266,6 +261,7 @@ namespace NutritionApp_Android.ViewModels
 
             try
             {
+                MyUser.IdUser = GlobalObjects.LocalUser.Id;
                 MyUser.Password = pPassword;
 
                 bool R = await MyUser.UpdatePassword();
@@ -283,6 +279,38 @@ namespace NutritionApp_Android.ViewModels
                 IsBusy = false;
             }
         }
+
+
+        public async Task<bool> UpdateUserState(
+                                                int pUserId,
+                                                int pUserStatus
+                                                               )
+        {
+            if (IsBusy) return false;
+
+            IsBusy = true;
+
+            try
+            {
+                MyUser.IdUser = pUserId;
+                MyUser.IdState = pUserStatus;
+
+                bool R = await MyUser.UpdateUserState();
+
+                return R;
+            }
+            catch (Exception)
+            {
+                return false;
+
+                throw;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
 
         public async Task<bool> UserRecoveryCodeValidation(string pEmail, int pRecoveryCode)
         {

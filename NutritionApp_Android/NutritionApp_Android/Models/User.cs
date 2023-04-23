@@ -144,8 +144,6 @@ namespace NutritionApp_Android.Models
         {
             try
             {
-                this.IdUser = GlobalObjects.LocalUser.Id;
-
                 string RouteSufix = string.Format("Users/{0}", this.IdUser);
 
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
@@ -157,6 +155,7 @@ namespace NutritionApp_Android.Models
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
                 Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
                 
+                // JSON class -> build patch method
                 JsonObjectPatch JSON = new JsonObjectPatch();
                 JSON.JsonCollector.Add("FullName", this.FullName);
                 JSON.JsonCollector.Add("Phone", this.Phone);
@@ -197,8 +196,6 @@ namespace NutritionApp_Android.Models
         {
             try
             {
-                this.IdUser = GlobalObjects.LocalUser.Id;
-
                 string RouteSufix = string.Format("Users/{0}", this.IdUser);
 
                 string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
@@ -207,12 +204,56 @@ namespace NutritionApp_Android.Models
 
                 Request = new RestRequest(URL, Method.Patch);
 
-
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
                 Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
 
                 JsonObjectPatch JSON = new JsonObjectPatch();
                 JSON.JsonCollector.Add("Password", this.Password);
+                List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
+
+                string SerializedModel = JsonConvert.SerializeObject(JSONList);
+
+                Request.AddBody(SerializedModel, GlobalObjects.MimeType);
+
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                HttpStatusCode statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                string ErrorMsg = ex.Message;
+
+                throw;
+            }
+        }
+
+
+        public async Task<bool> UpdateUserState()
+        {
+            try
+            {
+                string RouteSufix = string.Format("Users/{0}", this.IdUser);
+
+                string URL = Services.APIConnection.ProductionURLPrefix + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Patch);
+
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                JsonObjectPatch JSON = new JsonObjectPatch();
+                JSON.JsonCollector.Add("IdState", this.IdState);
                 List<JsonObjectPatch> JSONList = JSON.PatchMethod(JSON.JsonCollector);
 
                 string SerializedModel = JsonConvert.SerializeObject(JSONList);

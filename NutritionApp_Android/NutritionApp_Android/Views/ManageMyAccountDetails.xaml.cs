@@ -56,6 +56,7 @@ namespace NutritionApp_Android.Views
 
                 if (R)
                 {
+                    // method -> refresh global user
                     GlobalObjects.LocalUser = await viewModel.GetUserData(TxtEmail.Text.Trim());
 
                     await DisplayAlert(":)", "User Updated Successfully!", "OK");

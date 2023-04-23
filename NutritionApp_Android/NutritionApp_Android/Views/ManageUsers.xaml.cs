@@ -1,4 +1,5 @@
-﻿using NutritionApp_Android.ViewModels;
+﻿using NutritionApp_Android.Models;
+using NutritionApp_Android.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,15 +34,9 @@ namespace NutritionApp_Android.Views
             LoadPage();
         }
 
-
         private async void LoadPage()
         {
             UsersListView.ItemsSource = await viewModel.GetUsersList( this.IdStatus );
-        }
-
-        private void BtnUpdateUser_Clicked(object sender, EventArgs e)
-        {
-
         }
 
         private async void BtnCancel_Clicked(object sender, EventArgs e)
@@ -75,6 +70,54 @@ namespace NutritionApp_Android.Views
             LoadPage();
         }
 
+        private async void UsersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (UsersListView.SelectedItem != null)
+            {
+                User user = (User)UsersListView.SelectedItem;
+                int IdUser = user.IdUser;
+                int IdState = user.IdState;
+                string UserName = user.FullName;
+
+                int NewIdState = ChangeState(IdState);
+
+                if(IdUser > 0)
+                {
+                    bool R = await viewModel.UpdateUserState(IdUser, NewIdState);
+
+                    if (R)
+                    {
+                        await DisplayAlert(":)", string.Format("User {0} Updated Successfully!", UserName), "OK");
+                        
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert(":(", string.Format("User Updated Unsuccessfully", UserName), "OK");
+                    }
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Select a user", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Select a user", "OK");
+            }
+        }
+
+        private int ChangeState(int IdState)
+        {
+            int R = 0;
+
+            if ( IdState == 1 ) R = 2;
+
+            if ( IdState == 2 ) R = 1;
+
+            return R;
+        }
 
     }
 }

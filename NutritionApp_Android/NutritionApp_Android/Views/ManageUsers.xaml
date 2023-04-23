@@ -18,14 +18,12 @@
                     <Label Text="Users List" Padding="20,0,0,0" FontSize="20" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                     <StackLayout Padding="0,15,0,15">
 
-                        <Button x:Name="BtnUpdateUser" Text="Update User" BackgroundColor="DarkMagenta" TextColor="White" FontAttributes="Bold"
-                            CornerRadius="15" Clicked="BtnUpdateUser_Clicked" />
                         <Button x:Name="BtnCancel" Text="Cancel" BackgroundColor="{StaticResource ColorSecondaryButton}" TextColor="White" FontAttributes="Bold" 
                             CornerRadius="15" Clicked="BtnCancel_Clicked" />
-                        <Label x:Name="LblUsersStatus" Text="Active Users" HorizontalTextAlignment="End" TextColor="Fuchsia"/>
+                        <Label x:Name="LblUsersStatus" Text="Active Users" HorizontalTextAlignment="End" TextColor="Fuchsia" FontSize="20"/>
                         <Switch x:Name="SwShowInactiveUsers" IsToggled="True" Toggled="SwShowInactiveUsers_Toggled" />
                     </StackLayout>
-                    <CollectionView x:Name="UsersListView" SelectionMode="Single">
+                    <CollectionView x:Name="UsersListView" SelectionMode="Single" SelectionChanged="UsersListView_SelectionChanged">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="10"
@@ -40,6 +38,11 @@
                                        Text="{Binding FullName}"
                                        VerticalOptions="End"
                                        FontSize="20"/>
+                                    <Label Grid.Row="1"
+                                       Grid.Column="2"
+                                       Text="{Binding IdState}"
+                                       VerticalOptions="End"
+                                       IsVisible="False"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
