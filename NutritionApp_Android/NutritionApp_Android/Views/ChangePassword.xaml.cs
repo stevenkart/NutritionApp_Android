@@ -15,11 +15,12 @@ namespace NutritionApp_Android.Views
     {
 
         UserViewModel viewModel;
+        StringBuilder sb { get; set; }
 
         public ChangePassword()
         {
             InitializeComponent();
-
+            sb = new StringBuilder();
             this.BindingContext = viewModel = new UserViewModel();
         }
 
@@ -27,9 +28,10 @@ namespace NutritionApp_Android.Views
         {
             bool R = false;
 
-            string error = ValidateData();
+            bool error = ValidateData();
 
-            if ( string.IsNullOrEmpty( error ) )
+
+            if (error == false)
             {
                 try
                 {
@@ -56,7 +58,8 @@ namespace NutritionApp_Android.Views
             }
             else
             {
-                await DisplayAlert("Validation Error", string.Format("{0}", error), "OK");
+                await DisplayAlert("Validation Error", string.Format("{0}", sb.ToString()), "OK");
+                sb = null;
                 return;
             }
             
@@ -86,40 +89,52 @@ namespace NutritionApp_Android.Views
                 await DisplayAlert("Validation Error", "Password Incorrect!", "OK");
                 return;
             }
-
         }
 
         // method -> data can't be empty
-        private string ValidateData()
+        private bool ValidateData()
         {
-            StringBuilder sb = new StringBuilder();
+            sb = new StringBuilder();
 
-            if ( string.IsNullOrEmpty( TxtCurrentPassword.Text.Trim() ) )
+            if (TxtCurrentPassword.Text == null )
             {
                 sb.Append( "Current Password can't be empty \n" );
             }
 
-            if ( string.IsNullOrEmpty( TxtNewPassword.Text.Trim() ) )
+            if (TxtNewPassword.Text == null)
             {
                 sb.Append( "New Password can't be empty \n" );
             }
 
-            if ( string.IsNullOrEmpty( TxtConfirmNewPassword.Text.Trim() ) )
+            if (TxtConfirmNewPassword.Text == null)
             {
                 sb.Append( "Confirmation Password can't be empty \n" );
             }
-            
-            if ( TxtNewPassword.Text.Length < 8 || TxtNewPassword.Text.Length > 16 )
+
+            if (TxtNewPassword.Text != null)
             {
-                sb.Append( "New Password must be between 8 & 16 digits \n" );
+                if (TxtNewPassword.Text.Length < 8 || TxtNewPassword.Text.Length > 16)
+                {
+                    sb.Append("New Password must be between 8 & 16 digits \n");
+                }
             }
 
-            if ( !TxtNewPassword.Text.Equals( TxtConfirmNewPassword.Text ) )
+            if (TxtNewPassword.Text != null && TxtConfirmNewPassword.Text != null)
             {
-                sb.Append( "Confirmation Password Incorrect \n" );
+                if (!TxtNewPassword.Text.Equals(TxtConfirmNewPassword.Text))
+                {
+                    sb.Append("Confirmation Password Incorrect \n");
+                }
             }
 
-            return sb.ToString();
+            if (sb != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // button -> exit

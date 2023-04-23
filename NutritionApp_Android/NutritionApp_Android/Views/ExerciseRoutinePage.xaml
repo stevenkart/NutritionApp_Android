@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NutritionApp_Android.Views.ExerciseRoutinePage"
              Shell.NavBarIsVisible="False"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             Title="List of Exercise Routines">
 
     <ContentPage.Resources>
         <ResourceDictionary>

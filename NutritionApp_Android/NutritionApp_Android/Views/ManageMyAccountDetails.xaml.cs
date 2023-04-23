@@ -1,8 +1,9 @@
-﻿using NutritionApp_Android.Models;
+﻿using Acr.UserDialogs;
+using NutritionApp_Android.Models;
 using NutritionApp_Android.ViewModels;
 using System;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -88,7 +89,7 @@ namespace NutritionApp_Android.Views
 
                                 await DisplayAlert(":)", "User Updated Successfully!", "OK");
                                 MyUser = null;
-                                await Navigation.PushAsync(new MainMenuPage());
+                                //await Navigation.PushAsync(new MainMenuPage());
                             }
                             else
                             {
@@ -135,7 +136,7 @@ namespace NutritionApp_Android.Views
 
                                     await DisplayAlert(":)", "User Updated Successfully!", "OK");
                                     MyUser = null;
-                                    await Navigation.PushAsync(new MainMenuPage());
+                                    //await Navigation.PushAsync(new MainMenuPage());
                                 }
                                 else
                                 {
@@ -164,6 +165,10 @@ namespace NutritionApp_Android.Views
                         }
                     }
                 }
+            }
+            else
+            {
+                await DisplayAlert("Error", $"The {error}", "OK");
             }
             /*
             else
