@@ -24,15 +24,17 @@ namespace NutritionApp_Android.Views
             InitializeComponent();
 
             BindingContext = viewModel = new ReminderViewModel();
+        }
 
+        protected override void OnAppearing() //metodo que al volver a mostrar la pagina, vuelve a refrescar la lista con la nueva DATA
+        {
             LoadPage();
         }
 
+
         private async void LoadPage()
         {
-
             ReminderListView.ItemsSource = await viewModel.GetReminders();
-
         }
 
         private async void BtnCancel_Clicked(object sender, EventArgs e)

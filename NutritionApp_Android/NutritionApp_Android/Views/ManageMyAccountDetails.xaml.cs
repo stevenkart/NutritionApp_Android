@@ -1,11 +1,7 @@
-﻿using Acr.UserDialogs;
-using NutritionApp_Android.Models;
+﻿using NutritionApp_Android.Models;
 using NutritionApp_Android.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,6 +23,7 @@ namespace NutritionApp_Android.Views
             MyUser = new UserDTO();
         }
 
+        // method -> load data 
         public void LoadPage()
         {
             UserDTO User = GlobalObjects.LocalUser;
@@ -40,6 +37,7 @@ namespace NutritionApp_Android.Views
             TxtFat.Text = Convert.ToString(Convert.ToDouble(User.Fat));
         }
 
+        // button -> modified user personal data
         private async void BtnUpdate_Clicked(object sender, EventArgs e)
         {
             string error = ValidateData();
