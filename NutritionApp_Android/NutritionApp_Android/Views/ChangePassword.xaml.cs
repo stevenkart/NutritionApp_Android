@@ -20,7 +20,6 @@ namespace NutritionApp_Android.Views
         public ChangePassword()
         {
             InitializeComponent();
-            sb = new StringBuilder();
             this.BindingContext = viewModel = new UserViewModel();
         }
 
@@ -31,7 +30,7 @@ namespace NutritionApp_Android.Views
             bool error = ValidateData();
 
 
-            if (error == false)
+            if (error)
             {
                 try
                 {
@@ -94,7 +93,7 @@ namespace NutritionApp_Android.Views
         // method -> data can't be empty
         private bool ValidateData()
         {
-            sb = new StringBuilder();
+            sb = new StringBuilder() ;
 
             if (TxtCurrentPassword.Text == null )
             {
@@ -127,13 +126,13 @@ namespace NutritionApp_Android.Views
                 }
             }
 
-            if (sb != null)
+            if (sb.Length > 0)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
 

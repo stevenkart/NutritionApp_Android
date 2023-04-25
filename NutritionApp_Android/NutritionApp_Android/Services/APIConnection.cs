@@ -11,11 +11,11 @@ namespace NutritionApp_Android.Services
 
         //ademas aca vamos a escibir la infor del API key que necesitamos para podernos validar 
 
-        public static string TestingnURLPrefix = "http://192.168.1.237:45455/api/";
-        public static string ProductionURLPrefix = "http://192.168.1.237:45455/api/";
+        //public static string TestingnURLPrefix = "http://192.168.1.237:45455/api/";
+        //public static string ProductionURLPrefix = "http://192.168.1.237:45455/api/";
 
-        //public static string TestingnURLPrefix = "http://192.168.0.17:45455/api/";
-        //public static string ProductionURLPrefix = "http://192.168.0.17:45455/api/";
+        public static string TestingnURLPrefix = "http://192.168.23.1:45455/api/";
+        public static string ProductionURLPrefix = "http://192.168.23.1:45455/api/";
 
 
 

@@ -88,7 +88,7 @@ namespace NutritionApp_Android.Views
                 
                 if ( BtnText.Equals("Update Reminder") )
                 {
-                    R = await viewModel.UpdateReminder(Detail, Date, Hour, true);
+                    R = await viewModel.UpdateReminder(Detail, Date, Hour, false);
                 }
 
                 
@@ -132,7 +132,7 @@ namespace NutritionApp_Android.Views
             string Date = TxtDate.Date.ToString();
             string Hour = TxtTime.Time.ToString();
 
-            bool R = await viewModel.UpdateReminder(Detail, Date, Hour, false);
+            bool R = await viewModel.UpdateReminder(Detail, Date, Hour, true);
 
             if (R)
             {
